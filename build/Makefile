@@ -173,20 +173,20 @@ INCDIR += -I$(APP_ROOT_DIR)/src/
 #INCDIR += -I$(LIB_ROOT_DIR)/Battery_manager/
 #INCDIR += -I$(LIB_ROOT_DIR)/Ble_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/Ble_composite_dev/
-#INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/
+INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/
 #INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/common/
 #INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/defyN2/
 #INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/defyN2/com_models/
-#INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
+INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
 #INCDIR += -I$(LIB_ROOT_DIR)/CRC/
-#INCDIR += -I$(LIB_ROOT_DIR)/EEPROM/
+INCDIR += -I$(LIB_ROOT_DIR)/EEPROM/
 #INCDIR += -I$(LIB_ROOT_DIR)/Fifo_buffer/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/effects/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/layers/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/src/
-#INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/palette/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/effects/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/layers/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/src/
+INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/palette/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/rf_host_device/includes/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/rf_host_device/includes/middleware/
@@ -195,48 +195,49 @@ INCDIR += -I$(LIB_ROOT_DIR)/Ble_composite_dev/
 #INCDIR += -I$(LIB_ROOT_DIR)/RF_manager/
 #INCDIR += -I$(LIB_ROOT_DIR)/Spi_slave/
 #INCDIR += -I$(LIB_ROOT_DIR)/Spi_slave/link/
-#INCDIR += -I$(LIB_ROOT_DIR)/Status_leds/
+INCDIR += -I$(LIB_ROOT_DIR)/Status_leds/
 INCDIR += -I$(LIB_ROOT_DIR)/Time_counter/
-#INCDIR += -I$(LIB_ROOT_DIR)/Twi_master/
+INCDIR += -I$(LIB_ROOT_DIR)/Twi_master/
 #INCDIR += -I$(LIB_ROOT_DIR)/UpgradeKeyscanner/include/
 #INCDIR += -I$(LIB_ROOT_DIR)/UpgradeKeyscanner/src/
 #INCDIR += -I$(LIB_ROOT_DIR)/utils/Do_once/
 #INCDIR += -I$(LIB_ROOT_DIR)/utils/Run_task_once/
 #INCDIR += -I$(LIB_ROOT_DIR)/utils/Timer/
 INCDIR += -I$(LIB_ROOT_DIR)/Watchdog_timer/
-#INCDIR += -I$(LIB_ROOT_DIR)/Wire/
+INCDIR += -I$(LIB_ROOT_DIR)/Wire/
 
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/
-#INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/
+INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/memory/
-#
-## Kaleidoscope Adapter
-#INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/
-#INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/core/
-#INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/falsep/
-#INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/interfaces/
-#INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/modules/
-#
-#INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/
-#INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/
-#INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/
-#INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/public/
-#INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/
 
-#INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/
+# Kaleidoscope Adapter
+INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/
+INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/core/
+INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/falsep/
+INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/interfaces/
+INCDIR += -I$(KEYBOARD_API_ROOT_DIR)/modules/
+
+INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/
+INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/
+INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/
+INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/public/
+INCDIR += -I$(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/
+
+INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/
 #INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/
-#INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager
-#INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules
-#INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/
+INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager
+INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/regular
+INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules
+INCDIR += -I$(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/
 
 # Keyboardio HID
 INCDIR += -I$(KEYBOARDIO_HID_ROOT_DIR)/src/
 
-## SDK
+# SDK
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/ble/ble_advertising/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/ble/ble_dtm/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/ble/ble_link_ctx_manager/
@@ -256,7 +257,7 @@ INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/balloc/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/delay/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/experimental_section_vars/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fds/
-#INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/
+INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/memobj/
@@ -306,13 +307,13 @@ SRCSC += $(LIB_ROOT_DIR)/Time_counter/Time_counter.c
 #
 #SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_mutex.c
 #SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_spi.c
-#SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/heap.c
-#SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/link_list.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/heap.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/link_list.c
 #SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/utils/dl_crc32.c
 ##SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/spi/link/spi_link_slave.c
-#
+
 #SRCSCXX += $(LIB_ROOT_DIR)/Fifo_buffer/Fifo_buffer.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/EEPROM/EEPROM.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/EEPROM/EEPROM.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/layers/LEDDevice.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/layers/LEDDevice-Remote.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/layers/LEDLayers.cpp
@@ -325,11 +326,11 @@ SRCSC += $(LIB_ROOT_DIR)/Time_counter/Time_counter.c
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/LEDManager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/palette/LEDPalette.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/palette/LEDPaletteRGBW.cpp
-#
+
 #SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/Spi_slave.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/SpiPort.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Status_leds/Status_leds.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Watchdog_timer/Watchdog_timer.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Status_leds/Status_leds.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Watchdog_timer/Watchdog_timer.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Twi_master/Twi_master.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Wire/Wire.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/KeyScannerFlasher.cpp
@@ -337,7 +338,7 @@ SRCSC += $(LIB_ROOT_DIR)/Time_counter/Time_counter.c
 #SRCSCXX += $(LIB_ROOT_DIR)/CRC/CRC_wrapper.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/RF_manager/Radio_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/utils/Timer/Timer.cpp
 
@@ -358,9 +359,9 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/atomic_flags/nrf_atflags.
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/balloc/nrf_balloc.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/experimental_section_vars/nrf_section_iter.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fds/fds.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/nrf_fstorage.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/nrf_fstorage.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/nrf_fstorage_nvmc.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/nrf_fstorage_sd.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fstorage/nrf_fstorage_sd.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/memobj/nrf_memobj.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/pwr_mgmt/nrf_pwr_mgmt.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/strerror/nrf_strerror.c
@@ -391,8 +392,8 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_power.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_timer.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_twim.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/prs/nrfx_prs.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_pwm.c
-#
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_pwm.c
+
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/hal/nrf_nvmc.c
 #
 ## UART communication and NRF_LOG.
@@ -402,45 +403,45 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_timer.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uarte.c
 SRCSC += $(wildcard $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/*.c)
 
-## Keyboard API
-#SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_base.c
-#SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_memory.c
-#SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_if.c
-#SRCSC += $(KEYBOARD_API_ROOT_DIR)/modules/kbd_if_manager.c
-#SRCSC += $(KEYBOARD_API_ROOT_DIR)/keyboard_api.c
+# Keyboard API
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_base.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_memory.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_if.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/modules/kbd_if_manager.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/keyboard_api.c
 #
 ## Kaleidoscope FAL (Framework Abstraction Layer)
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_base.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_memory.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_base.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_memory.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/DynamicMacrosDygma.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/EEPROMKeymapDygma.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/KbdInterface.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/LEDControlDygma.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/MouseKeysDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/EEPROMKeymapDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/KbdInterface.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/LEDControlDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/MouseKeysDygma.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
-#
-## Kaleidoscope
+
+# Kaleidoscope
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/bootloader_util.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Hand.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/KeyboardManager.cpp
-#
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Hand.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/KeyboardManager.cpp
+
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/key_events.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/layers.cpp
-#
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/layers.cpp
+
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/SuperkeysHandler.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/KeyRoleManager.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/Superkeys/Actions/ActionsDriver.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/Superkeys/Superkey/Superkey.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/KeyRoleManager.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/Superkeys/Actions/ActionsDriver.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/Superkeys/Superkey/Superkey.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/Superkeys/Timeline/Timeline.cpp
 #
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/FocusSerial.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/HostPowerManagement.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/LayerFocus.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/LEDControl/LEDUtils.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/MouseKeys/MouseWrapper.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/MouseKeys/MouseWrapper.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/OneShot.cpp
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/Runtime.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/Runtime.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/device.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/LEDModeManager.cpp
 #
@@ -458,10 +459,10 @@ SRCSC += $(wildcard $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/*.c)
 # Keyboardio HID
 #SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/ConsumerControl.cpp
 #SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/Keyboard.cpp
-#SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/Mouse.cpp
+SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/Mouse.cpp
 SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/RawHID.cpp
 #SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/MultiReport/SystemControl.cpp
-#SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/hidDefy.cpp
+SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/hidDefy.cpp
 #SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 
 #-------------------------------------------------------------------------------

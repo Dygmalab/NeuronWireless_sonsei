@@ -40,8 +40,8 @@
 ////#include "app_error.h"
 ////#include "app_timer.h"
 ////#include "nrf_delay.h"
-//#include "nrf_gpio.h"
-//
+#include "nrf_gpio.h"
+
 ////// UART debug log
 ////#include "nrf_log.h"
 ////#include "nrf_log_ctrl.h"
@@ -52,9 +52,9 @@
 //#endif
 #include "Arduino.h"
 //#include "EEPROM.h"
-//#include "Watchdog_timer.h"
-//#include "common.h"
-//
+#include "Watchdog_timer.h"
+#include "common.h"
+
 //// Kaleidoscope
 ////#include "Kaleidoscope-Colormap.h"
 ////#include "Kaleidoscope-DynamicMacros.h"
@@ -98,24 +98,20 @@
 ////#include "Upgrade.h"
 //#include "rf_host_device_api.h"
 ////#include <Adafruit_TinyUSB.h>
-//
-//
-//#include "keyboard_api.h"
+
+
+#include "keyboard_api.h"
 //#include "Battery.h"
 //#include "Ble_manager.h"
-//#include "configuration.h"
+#include "configuration.h"
 //#include "DynamicMacrosDygma.h"
 //#include "LEDDevice-Remote.h"
 //#include "LEDManager.h"
 //#include "LEDPaletteRGBW.h"
 //#include "Radio_manager.h"
 //#include "Upgrade.h"
-//
-//#if !COMPILE_FOR_NEURON_2_HARDWARE_V1_0 && !COMPILE_FOR_NEURON_2_HARDWARE_V1_1
-//#warning "<<<<<<<<< The project is not being built for production >>>>>>>>>"
-//#endif
 
-//Watchdog_timer watchdog_timer;
+Watchdog_timer watchdog_timer;
 
 ///*****************************************************/
 ///*                    LED Manager                    */
@@ -306,9 +302,9 @@
 ////// Left Ctrl + Left Shift + Left Alt + 6
 ////.keys = {R4C0, R3C0, R4C2, R0C6}}
 ////);
-//
-//static void gpio_output_voltage_setup(void);
-//static void init_gpio(void);
+
+static void gpio_output_voltage_setup(void);
+static void init_gpio(void);
 //void reset_mcu(void);
 void yield(void);
 
@@ -328,37 +324,37 @@ void yield(void);
 
 void setup(void)
 {
-//    result_t result;
-//
+    result_t result;
+
 //    // RF Host library
 //    rfhdev_api_init();
-//
-//    // GPIO
-//    gpio_output_voltage_setup();
-//    init_gpio();
-//
-//    watchdog_timer.init();
-//    watchdog_timer.reset();
-//
-//#if ENABLE_UART_DEBUG_LOG
-//    NRF_LOG_INIT(NULL);
-//    NRF_LOG_DEFAULT_BACKENDS_INIT();
-//#endif
-//    NRF_LOG_INFO("< N2 Defy nRF52833 >");
-//    NRF_LOG_INFO("Initializing...");
-//    NRF_LOG_FLUSH();
-//
-//    // Initialize the System Configuration
-//    result = configuration_init();
-//    ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
-//
+
+    // GPIO
+    gpio_output_voltage_setup();
+    init_gpio();
+
+    watchdog_timer.init();
+    watchdog_timer.reset();
+
+#if ENABLE_UART_DEBUG_LOG
+    NRF_LOG_INIT(NULL);
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
+#endif
+    NRF_LOG_INFO("< N2 Sonshi nRF52840 >");
+    NRF_LOG_INFO("Initializing...");
+    NRF_LOG_FLUSH();
+
+    // Initialize the System Configuration
+    result = configuration_init();
+    ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
+
 //    // Initialize the communications before Kaleidoscope to make sure the correct order of the incoming message processing
 //    Communications.init();
-//
-//    // Keyboard
-//    result = kbdapi_init();
-//    ASSERT_DYGMA( result == RESULT_OK, "kbdapi_init failed!" );
-//
+
+    // Keyboard
+    result = kbdapi_init();
+    ASSERT_DYGMA( result == RESULT_OK, "kbdapi_init failed!" );
+
 //    // Firmware version
 //    result = FirmwareVersion.init();
 //    ASSERT_DYGMA( result == RESULT_OK, "FirmwareVersion.init failed!" );
@@ -422,54 +418,36 @@ void loop()
 //    //__WFE();
 }
 
+static void gpio_output_voltage_setup(void)
+{
+    // Configure UICR_REGOUT0 register only if it is set to default value.
+    if ((NRF_UICR->REGOUT0 & UICR_REGOUT0_VOUT_Msk) != (UICR_REGOUT0_VOUT_3V3 << UICR_REGOUT0_VOUT_Pos))
+    {
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy);
 
-//static void gpio_output_voltage_setup(void)
-//{
-//    // Configure UICR_REGOUT0 register only if it is set to default value.
-//    if ((NRF_UICR->REGOUT0 & UICR_REGOUT0_VOUT_Msk) != (UICR_REGOUT0_VOUT_3V3 << UICR_REGOUT0_VOUT_Pos))
-//    {
-//        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen;
-//        while (NRF_NVMC->READY == NVMC_READY_READY_Busy);
-//
-//        NRF_UICR->REGOUT0 = (NRF_UICR->REGOUT0 & ~((uint32_t)UICR_REGOUT0_VOUT_Msk)) |
-//                            (UICR_REGOUT0_VOUT_3V3 << UICR_REGOUT0_VOUT_Pos);
-//
-//        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren;
-//        while (NRF_NVMC->READY == NVMC_READY_READY_Busy);
-//
-//        // System reset is needed to update UICR registers.
-//        NVIC_SystemReset();  // Soft reset MCU.
-//        NRF_UICR->REGOUT0;
-//    }
-//}
-//
-//static void init_gpio(void)
-//{
-//    // Configure pins as Inputs
-//    nrf_gpio_cfg_input(BTN_RESET, NRF_GPIO_PIN_PULLUP);
-//    nrf_gpio_cfg_input(BTN_BOOT, NRF_GPIO_PIN_PULLUP);
-//
-//    nrf_gpio_cfg_output(SIDE_NRESET_1);
-//    nrf_gpio_cfg_output(SIDE_NRESET_2);
-//
-//    nrf_gpio_pin_write(SIDE_NRESET_1, 0);
-//    nrf_gpio_pin_write(SIDE_NRESET_2, 0);
-//
-///* Only for DEBUG */
-//#if (COMPILE_FOR_DEBUG_BOARD_HARDWARE_V1_0 | COMPILE_FOR_DEBUG_BOARD_HARDWARE_V1_1)
-//    // Configure pins as Inputs
-//    nrf_gpio_cfg_input(BTN1, NRF_GPIO_PIN_PULLUP);
-//    nrf_gpio_cfg_input(BTN2, NRF_GPIO_PIN_PULLUP);
-//    nrf_gpio_cfg_input(BTN3, NRF_GPIO_PIN_PULLUP);
-//
-//    // Configure pins as Outputs
-//    nrf_gpio_cfg_output(LED1);
-//    nrf_gpio_cfg_output(LED2);
-//    nrf_gpio_cfg_output(LED3);
-//    nrf_gpio_cfg_output(LED8);
-//#endif
-//}
-//
+        NRF_UICR->REGOUT0 = (NRF_UICR->REGOUT0 & ~((uint32_t)UICR_REGOUT0_VOUT_Msk)) |
+                            (UICR_REGOUT0_VOUT_3V3 << UICR_REGOUT0_VOUT_Pos);
+
+        NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren;
+        while (NRF_NVMC->READY == NVMC_READY_READY_Busy);
+
+        // System reset is needed to update UICR registers.
+        NVIC_SystemReset();  // Soft reset MCU.
+        NRF_UICR->REGOUT0;
+    }
+}
+
+static void init_gpio(void)
+{
+    // Configure pins as Inputs
+    nrf_gpio_cfg_input(BSP_GPIO_BOOT, NRF_GPIO_PIN_PULLUP);
+
+    nrf_gpio_cfg_output(BSP_GPIO_nRST_KS);
+
+    nrf_gpio_pin_write(BSP_GPIO_nRST_KS, 0);
+}
+
 //// Lest implement the reset_mcu so that if we have something to write to the flash is goin to wait for the procedure to finish.
 //void reset_mcu(void)
 //{
