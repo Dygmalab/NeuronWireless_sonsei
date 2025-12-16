@@ -41,14 +41,25 @@
 //#define TWI_MASTER_FLASH_CLK NRF_TWIM_FREQ_100K  /* flashing doesn't work reliably at higher clock speeds */
 
 #if COMPILE_FOR_SONSHI_HARDWARE_V1_0
-    #define BSP_GPIO_nRST_KS NRF_GPIO_PIN_MAP(0, 20)  /* nRESET signal OUT to keyscanner; HIGH = running, LOW = reset */
+    #define BSP_GPIO_nRST_KS    NRF_GPIO_PIN_MAP(0, 20)  /* nRESET signal OUT to keyscanner; HIGH = running, LOW = reset */
 
-    #define LED_GREEN_PIN NRF_GPIO_PIN_MAP(0, 30)
-    #define LED_RED_PIN   NRF_GPIO_PIN_MAP(0, 29)
+    #define LED_GREEN_PIN       NRF_GPIO_PIN_MAP(0, 30)
+    #define LED_RED_PIN         NRF_GPIO_PIN_MAP(0, 29)
 
     /* Note: The RESET input is used as general input BOOT signal for entering the bootloader mode */
-    #define BSP_GPIO_RESET   NRF_GPIO_PIN_MAP(0, 18)  /* Connected to LOW activated. */
-    #define BSP_GPIO_BOOT    BSP_GPIO_RESET           /* Connected to LOW activated. */
+    #define BSP_GPIO_RESET      NRF_GPIO_PIN_MAP(0, 18)  /* Connected to LOW activated. */
+    #define BSP_GPIO_BOOT       BSP_GPIO_RESET           /* Connected to LOW activated. */
+
+    /* SPI Port support */
+//    #define BSP_SPI_PORT_SPI0    0
+    #define BSP_SPI_PORT_SPI1    1
+//    #define BSP_SPI_PORT_SPI2    0
+
+    #define BSP_SPI1_MISO   NRF_GPIO_PIN_MAP(0, 17)
+    #define BSP_SPI1_MOSI   NRF_GPIO_PIN_MAP(0, 15)
+    #define BSP_SPI1_CLK    NRF_GPIO_PIN_MAP(0, 13)
+    #define BSP_SPI1_CS     NRF_GPIO_PIN_MAP(0, 19)
+
 #endif
 
 #endif  /* __COMMON_H__ */
