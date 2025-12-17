@@ -35,8 +35,8 @@
 ////#include "nrf_drv_clock.h"
 ////#include "nrf_drv_power.h"
 //#include "nrf_fstorage.h"
-//#include "nrf_sdm.h"
-//
+#include "nrf_sdm.h"
+
 ////#include "app_error.h"
 ////#include "app_timer.h"
 ////#include "nrf_delay.h"
@@ -55,272 +55,268 @@
 #include "Watchdog_timer.h"
 #include "common.h"
 
-//// Kaleidoscope
-////#include "Kaleidoscope-Colormap.h"
-////#include "Kaleidoscope-DynamicMacros.h"
-//#include "Kaleidoscope-KeyRoleManager.h"
-////#include "Kaleidoscope-EEPROM-Keymap.h"
-////#include "Kaleidoscope-FocusSerial.h"
-////#include "Kaleidoscope-IdleLEDsDefy.h"
-////#include "Kaleidoscope-LayerFocus.h"
-////#include "Kaleidoscope-LEDControl.h"
-////#include "Kaleidoscope-MagicCombo.h"
-////#include "Kaleidoscope-MouseKeys.h"
-////#include "Kaleidoscope-USB-Quirks.h"
-////#include "Kaleidoscope.h"
-////// #include "RaiseIdleLEDs.h"
-////
-////#include "kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.h"
+// Kaleidoscope
+//#include "Kaleidoscope-Colormap.h"
+//#include "Kaleidoscope-DynamicMacros.h"
+#include "Kaleidoscope-KeyRoleManager.h"
+//#include "Kaleidoscope-EEPROM-Keymap.h"
+//#include "Kaleidoscope-FocusSerial.h"
+//#include "Kaleidoscope-IdleLEDsDefy.h"
+//#include "Kaleidoscope-LayerFocus.h"
+//#include "Kaleidoscope-LEDControl.h"
+//#include "Kaleidoscope-MagicCombo.h"
+//#include "Kaleidoscope-MouseKeys.h"
+//#include "Kaleidoscope-USB-Quirks.h"
+//#include "Kaleidoscope.h"
+//// #include "RaiseIdleLEDs.h"
 //
-//// Support for host power management (suspend & wakeup)
-//#include "Kaleidoscope-HostPowerManagement.h"
-//
-////#include "Kaleidoscope-OneShot.h"
-////#include "Kaleidoscope-Qukeys.h"
-////
-////// #include "LED-CapsLockLight.h"
-//
-//// LED effects
-////#include "LED-Palette-Theme-Defy.h"
-////#include "LEDEffect-BatteryStatus-Defy.h"
-////#include "LEDEffect-Bluetooth-Pairing-Defy.h"
-////#include "LEDEffect-Breathe-Defy.h"
-////#include "LEDEffect-Rainbow-Defy.h"
-////#include "LEDEffect-SolidColor-Defy.h"
-////#include "LEDEffect-Stalker-Defy.h"
-//
-////#include "Battery.h"
-////#include "Ble_composite_dev.h"
-////#include "Ble_manager.h"
-//#include "Communications.h"
-//#include "FirmwareVersion.h"
-////#include "Radio_manager.h"
-////#include "Upgrade.h"
-//#include "rf_host_device_api.h"
-////#include <Adafruit_TinyUSB.h>
+//#include "kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.h"
 
+// Support for host power management (suspend & wakeup)
+#include "Kaleidoscope-HostPowerManagement.h"
+
+//#include "Kaleidoscope-OneShot.h"
+//#include "Kaleidoscope-Qukeys.h"
+//
+//// #include "LED-CapsLockLight.h"
+
+// LED effects
+//#include "LED-Palette-Theme-Defy.h"
+//#include "LEDEffect-BatteryStatus-Defy.h"
+//#include "LEDEffect-Bluetooth-Pairing-Defy.h"
+//#include "LEDEffect-Breathe-Defy.h"
+//#include "LEDEffect-Rainbow-Defy.h"
+//#include "LEDEffect-SolidColor-Defy.h"
+//#include "LEDEffect-Stalker-Defy.h"
+
+//#include "Battery.h"
+//#include "Ble_composite_dev.h"
+//#include "Ble_manager.h"
+#include "Communications.h"
+#include "FirmwareVersion.h"
+//#include "Radio_manager.h"
+//#include "Upgrade.h"
+//#include "rf_host_device_api.h"
+//#include <Adafruit_TinyUSB.h>
 
 #include "keyboard_api.h"
-//#include "Battery.h"
-//#include "Ble_manager.h"
+#include "Battery.h"
+#include "Ble_manager.h"
 #include "configuration.h"
-//#include "DynamicMacrosDygma.h"
-//#include "LEDDevice-Remote.h"
-//#include "LEDManager.h"
-//#include "LEDPaletteRGBW.h"
+#include "DynamicMacrosDygma.h"
+#include "LEDDevice-Remote.h"
+#include "LEDManager.h"
+#include "LEDPaletteRGBW.h"
 //#include "Radio_manager.h"
 //#include "Upgrade.h"
 
 Watchdog_timer watchdog_timer;
 
-///*****************************************************/
-///*                    LED Manager                    */
-///*****************************************************/
-//
-///* LED Palette */
-//static class LEDPaletteRGBW LEDPaletteRGBW;
-//
-///* LED Device List */
-//static LEDDeviceRemote LEDDeviceLeftBL( LEDDevice::LED_DEVICE_TYPE_LEFT_BL, APP_LEDS_BL_LEFT_CNT );
-//static LEDDeviceRemote LEDDeviceLeftUG( LEDDevice::LED_DEVICE_TYPE_LEFT_UG, APP_LEDS_UG_LEFT_CNT );
-//static LEDDeviceRemote LEDDeviceRightBL( LEDDevice::LED_DEVICE_TYPE_RIGHT_BL, APP_LEDS_BL_RIGHT_CNT );
-//static LEDDeviceRemote LEDDeviceRightUG( LEDDevice::LED_DEVICE_TYPE_RIGHT_UG, APP_LEDS_UG_RIGHT_CNT );
-//static LEDDevice       LEDDeviceNeuron( LEDDevice::LED_DEVICE_TYPE_NEURON, APP_LEDS_NEURON_CNT );
-//
-//static LEDDevice_list_t LEDDevice_list =
+/*****************************************************/
+/*                    LED Manager                    */
+/*****************************************************/
+
+/* LED Palette */
+#warning "Sonshi runs RGB diodes"
+static class LEDPaletteRGBW LEDPaletteRGBW;
+
+/* LED Device List */
+static LEDDeviceRemote LEDDeviceBL( LEDDevice::LED_DEVICE_TYPE_KS_BL, APP_LEDS_BL_LEFT_CNT );
+
+static LEDDevice_list_t LEDDevice_list =
+{
+    &LEDDeviceBL
+};
+
+/*lint -save -e14 */
+void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On assert, the system can only recover with a reset.
+{
+    watchdog_timer.reset();
+    NRF_BREAKPOINT_COND;
+
+#ifndef DEBUG
+    NRF_LOG_ERROR("Fatal error");
+#else
+    switch (id)
+    {
+#ifdef SOFTDEVICE_PRESENT
+        case NRF_FAULT_ID_SD_ASSERT:
+        {
+            NRF_LOG_ERROR("SOFTDEVICE: ASSERTION FAILED");
+        }
+        break;
+
+        case NRF_FAULT_ID_APP_MEMACC:
+        {
+            NRF_LOG_ERROR("SOFTDEVICE: INVALID MEMORY ACCESS");
+        }
+        break;
+#endif
+        case NRF_FAULT_ID_SDK_ASSERT:
+        {
+            assert_info_t *p_info = (assert_info_t *)info;
+            NRF_LOG_ERROR("ASSERTION FAILED at %s:%u", p_info->p_file_name, p_info->line_num);
+        }
+        break;
+
+        case NRF_FAULT_ID_SDK_ERROR:
+        {
+            error_info_t *p_info = (error_info_t *)info;
+            NRF_LOG_ERROR("ERROR %u [%s] at %s:%u\r\nPC at: 0x%08x", p_info->err_code, nrf_strerror_get(p_info->err_code), p_info->p_file_name, p_info->line_num,
+                          pc);
+            NRF_LOG_ERROR("End of error report");
+        }
+        break;
+
+        default:
+        {
+            NRF_LOG_ERROR("UNKNOWN FAULT at 0x%08X", pc);
+        }
+        break;
+    }
+#endif
+
+    configuration_save();
+    NRF_LOG_FINAL_FLUSH();
+
+    __disable_irq();
+
+#ifndef DEBUG
+    NRF_LOG_WARNING("<< Soft reset >>");
+    NRF_LOG_FINAL_FLUSH();
+    NVIC_SystemReset();  // Soft reset MCU.
+#else
+    app_error_save_and_stop(id, pc, info);
+#endif // DEBUG
+}
+/*lint -restore */
+
+namespace std
+{
+    void __throw_out_of_range_fmt(const char *, ...)
+    {
+        while (1);
+    };
+}
+
+namespace std
+{
+    void __throw_bad_function_call()
+    {
+        while (1);
+    };
+}
+
+namespace std
+{
+    void __throw_length_error(char const *)
+    {
+        while (1);
+    };
+}
+
+namespace std
+{
+    void __throw_bad_alloc()
+    {
+        while (1);
+    };
+}
+
+/** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
+ * and turns them back on when it wakes up.
+ */
+void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event)
+{
+    switch (event)
+    {
+        case kaleidoscope::plugin::HostPowerManagement::Suspend:
+            LEDManager.leds_disable();
+            break;
+        case kaleidoscope::plugin::HostPowerManagement::Resume:
+            LEDManager.leds_enable();
+            break;
+        case kaleidoscope::plugin::HostPowerManagement::Sleep:
+            break;
+    }
+}
+
+/** hostPowerManagementEventHandler dispatches power management events (suspend,
+ * resume, and sleep) to other functions that perform action based on these
+ * events.
+ */
+void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event)
+{
+    toggleLedsOnSuspendResume(event);
+}
+
+/*****************************************************************************************************/
+/* MAGIC COMBOS: Old code which has been used for switch between NKRO and 6KRO because some older
+ *               computers were not compatible with NKRO on low level (bios). We are trying to remove
+ *               this switch but we keep it here for some time to see if anybody complains.
+ *               (Commented in Nov 2025) */
+/*****************************************************************************************************/
+
+//enum
 //{
-//    &LEDDeviceLeftBL, &LEDDeviceRightBL, &LEDDeviceLeftUG, &LEDDeviceRightUG, &LEDDeviceNeuron
+//    COMBO_TOGGLE_NKRO_MODE
 //};
 //
-///*lint -save -e14 */
-//void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On assert, the system can only recover with a reset.
+//static uint32_t protocol_toggle_start = 0;
+//
+//static void toggleKeyboardProtocol(uint8_t combo_index)
 //{
-//    watchdog_timer.reset();
-//    NRF_BREAKPOINT_COND;
+//    USBQuirks.toggleKeyboardProtocol();
+//    protocol_toggle_start = Kaleidoscope.millisAtCycleStart();
+//}
 //
-//#ifndef DEBUG
-//    NRF_LOG_ERROR("Fatal error");
-//#else
-//    switch (id)
+//static void protocolBreathe()
+//{
+//    if (Kaleidoscope.hasTimeExpired(protocol_toggle_start, uint16_t(10000)))
 //    {
-//#ifdef SOFTDEVICE_PRESENT
-//        case NRF_FAULT_ID_SD_ASSERT:
-//        {
-//            NRF_LOG_ERROR("SOFTDEVICE: ASSERTION FAILED");
-//        }
-//        break;
-//
-//        case NRF_FAULT_ID_APP_MEMACC:
-//        {
-//            NRF_LOG_ERROR("SOFTDEVICE: INVALID MEMORY ACCESS");
-//        }
-//        break;
-//#endif
-//        case NRF_FAULT_ID_SDK_ASSERT:
-//        {
-//            assert_info_t *p_info = (assert_info_t *)info;
-//            NRF_LOG_ERROR("ASSERTION FAILED at %s:%u", p_info->p_file_name, p_info->line_num);
-//        }
-//        break;
-//
-//        case NRF_FAULT_ID_SDK_ERROR:
-//        {
-//            error_info_t *p_info = (error_info_t *)info;
-//            NRF_LOG_ERROR("ERROR %u [%s] at %s:%u\r\nPC at: 0x%08x", p_info->err_code, nrf_strerror_get(p_info->err_code), p_info->p_file_name, p_info->line_num,
-//                          pc);
-//            NRF_LOG_ERROR("End of error report");
-//        }
-//        break;
-//
-//        default:
-//        {
-//            NRF_LOG_ERROR("UNKNOWN FAULT at 0x%08X", pc);
-//        }
-//        break;
+//        protocol_toggle_start = 0;
 //    }
-//#endif
 //
-//    configuration_save();
-//    NRF_LOG_FINAL_FLUSH();
+//    if (protocol_toggle_start == 0) return;
 //
-//    __disable_irq();
-//
-//#ifndef DEBUG
-//    NRF_LOG_WARNING("<< Soft reset >>");
-//    NRF_LOG_FINAL_FLUSH();
-//    NVIC_SystemReset();  // Soft reset MCU.
-//#else
-//    app_error_save_and_stop(id, pc, info);
-//#endif // DEBUG
-//}
-///*lint -restore */
-//
-//namespace std
-//{
-//    void __throw_out_of_range_fmt(const char *, ...)
+//    uint8_t hue = 120;
+//    if (Kaleidoscope.hid().keyboard().getProtocol() == HID_BOOT_PROTOCOL)
 //    {
-//        while (1);
-//    };
-//}
-//
-//namespace std
-//{
-//    void __throw_bad_function_call()
-//    {
-//        while (1);
-//    };
-//}
-//
-//namespace std
-//{
-//    void __throw_length_error(char const *)
-//    {
-//        while (1);
-//    };
-//}
-//
-//namespace std
-//{
-//    void __throw_bad_alloc()
-//    {
-//        while (1);
-//    };
-//}
-//
-///** toggleLedsOnSuspendResume toggles the LEDs off when the host goes to sleep,
-// * and turns them back on when it wakes up.
-// */
-//void toggleLedsOnSuspendResume(kaleidoscope::plugin::HostPowerManagement::Event event)
-//{
-//    switch (event)
-//    {
-//        case kaleidoscope::plugin::HostPowerManagement::Suspend:
-//            LEDManager.leds_disable();
-//            break;
-//        case kaleidoscope::plugin::HostPowerManagement::Resume:
-//            LEDManager.leds_enable();
-//            break;
-//        case kaleidoscope::plugin::HostPowerManagement::Sleep:
-//            break;
+//        hue = 0;
 //    }
+//
+//    cRGB color = breath_compute(hue);
+//    ::LEDControl.setCrgbAt(KeyAddr(4, 0), color);
+//    ::LEDControl.setCrgbAt(KeyAddr(3, 0), color);
+//    ::LEDControl.setCrgbAt(KeyAddr(4, 2), color);
+//    ::LEDControl.setCrgbAt(KeyAddr(0, 6), color);
+//    ::LEDControl.syncLeds();
 //}
 //
-///** hostPowerManagementEventHandler dispatches power management events (suspend,
-// * resume, and sleep) to other functions that perform action based on these
-// * events.
-// */
-//void hostPowerManagementEventHandler(kaleidoscope::plugin::HostPowerManagement::Event event)
-//{
-//    toggleLedsOnSuspendResume(event);
-//}
-//
-///*****************************************************************************************************/
-///* MAGIC COMBOS: Old code which has been used for switch between NKRO and 6KRO because some older
-// *               computers were not compatible with NKRO on low level (bios). We are trying to remove
-// *               this switch but we keep it here for some time to see if anybody complains.
-// *               (Commented in Nov 2025) */
-///*****************************************************************************************************/
-//
-////enum
-////{
-////    COMBO_TOGGLE_NKRO_MODE
-////};
-////
-////static uint32_t protocol_toggle_start = 0;
-////
-////static void toggleKeyboardProtocol(uint8_t combo_index)
-////{
-////    USBQuirks.toggleKeyboardProtocol();
-////    protocol_toggle_start = Kaleidoscope.millisAtCycleStart();
-////}
-////
-////static void protocolBreathe()
-////{
-////    if (Kaleidoscope.hasTimeExpired(protocol_toggle_start, uint16_t(10000)))
-////    {
-////        protocol_toggle_start = 0;
-////    }
-////
-////    if (protocol_toggle_start == 0) return;
-////
-////    uint8_t hue = 120;
-////    if (Kaleidoscope.hid().keyboard().getProtocol() == HID_BOOT_PROTOCOL)
-////    {
-////        hue = 0;
-////    }
-////
-////    cRGB color = breath_compute(hue);
-////    ::LEDControl.setCrgbAt(KeyAddr(4, 0), color);
-////    ::LEDControl.setCrgbAt(KeyAddr(3, 0), color);
-////    ::LEDControl.setCrgbAt(KeyAddr(4, 2), color);
-////    ::LEDControl.setCrgbAt(KeyAddr(0, 6), color);
-////    ::LEDControl.syncLeds();
-////}
-////
-////USE_MAGIC_COMBOS(
-////{.action = toggleKeyboardProtocol,
-////// Left Ctrl + Left Shift + Left Alt + 6
-////.keys = {R4C0, R3C0, R4C2, R0C6}}
-////);
+//USE_MAGIC_COMBOS(
+//{.action = toggleKeyboardProtocol,
+//// Left Ctrl + Left Shift + Left Alt + 6
+//.keys = {R4C0, R3C0, R4C2, R0C6}}
+//);
 
 static void gpio_output_voltage_setup(void);
 static void init_gpio(void);
 //void reset_mcu(void);
 void yield(void);
 
-//static result_t LEDManager_init(void)
-//{
-//    result_t result = RESULT_ERR;
-//    LEDManager::LEDManager_config_t config;
-//
-//    config.p_LEDPalette = &LEDPaletteRGBW;
-//    config.p_LEDDevice_list = &LEDDevice_list;
-//
-//    result = LEDManager.init( config );
-//    ASSERT_DYGMA( result == RESULT_OK, "LEDManager.init failed!" );
-//
-//    return result;
-//}
+static result_t LEDManager_init(void)
+{
+    result_t result = RESULT_ERR;
+    LEDManager::LEDManager_init_config_t config;
+
+    config.p_LEDPalette = &LEDPaletteRGBW;
+    config.p_LEDDevice_list = &LEDDevice_list;
+
+    result = LEDManager.init( config );
+    ASSERT_DYGMA( result == RESULT_OK, "LEDManager.init failed!" );
+
+    return result;
+}
 
 void setup(void)
 {
@@ -348,74 +344,74 @@ void setup(void)
     result = configuration_init();
     ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
 
-//    // Initialize the communications before Kaleidoscope to make sure the correct order of the incoming message processing
-//    Communications.init();
+    // Initialize the communications before Kaleidoscope to make sure the correct order of the incoming message processing
+    Communications.init();
 
     // Keyboard
     result = kbdapi_init();
     ASSERT_DYGMA( result == RESULT_OK, "kbdapi_init failed!" );
 
-//    // Firmware version
-//    result = FirmwareVersion.init();
-//    ASSERT_DYGMA( result == RESULT_OK, "FirmwareVersion.init failed!" );
-//
-//    // Battery
-//    result = Battery.init();
-//    ASSERT_DYGMA( result == RESULT_OK, "Battery.init failed!" );
-//
-//    // BLE
-//    result = BleManager.init();
-//    ASSERT_DYGMA( result == RESULT_OK, "BleManager.init failed!" );
-//
+    // Firmware version
+    result = FirmwareVersion.init();
+    ASSERT_DYGMA( result == RESULT_OK, "FirmwareVersion.init failed!" );
+
+    // Battery
+    result = Battery.init();
+    ASSERT_DYGMA( result == RESULT_OK, "Battery.init failed!" );
+
+    // BLE
+    result = BleManager.init();
+    ASSERT_DYGMA( result == RESULT_OK, "BleManager.init failed!" );
+
 //    // Radio
 //    result = RadioManager.init();
 //    ASSERT_DYGMA( result == RESULT_OK, "RadioManager.init failed!" );
-//
+
 //    // Keyscanner Upgrade module
 //    result = Upgrade.init();
 //    ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
-//
-//    // LED Manager
-//    result = LEDManager_init();
-//    ASSERT_DYGMA( result == RESULT_OK, "LEDManager_init failed!" );
-//
-//    //SuperkeysHandler.setup(); // Initialize the SuperkeysHandler plugin.
-//    keyRoleManager.setup_superkeys();   // Initialize the keyRoleManager plugin.
-//    DynamicMacros.reserve_storage();
-//
-//    // Keep the HID begin after the Kaleidoscope setup.
-//    HID().begin();
-//
-//    UNUSED( result );
+
+    // LED Manager
+    result = LEDManager_init();
+    ASSERT_DYGMA( result == RESULT_OK, "LEDManager_init failed!" );
+
+    //SuperkeysHandler.setup(); // Initialize the SuperkeysHandler plugin.
+    keyRoleManager.setup_superkeys();   // Initialize the keyRoleManager plugin.
+    DynamicMacros.reserve_storage();
+
+    // Keep the HID begin after the Kaleidoscope setup.
+    HID().begin();
+
+    UNUSED( result );
 }
 
 void loop()
 {
-//    watchdog_timer.reset();
+    watchdog_timer.reset();
 
-//    // Execute Kaleidoscope.
-//    Kaleidoscope.loop();
-//    Communications.run();
-//    BleManager.run();
-//    Battery.run();
+    // Execute Kaleidoscope.
+    Kaleidoscope.loop();
+    Communications.run();
+    BleManager.run();
+    Battery.run();
 //    Upgrade.run();
-////    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
-//
-//    LEDManager.run();
-//    configuration_run();
-//
-//    NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
-//
-//    /* Control the sleep mode here */
-//    /* We need a way of deciding on when we can go to sleep mode and when we should continue. */
-//    /* When we have such process, we need to add it to the rf_glue.c mcu_sleep_postpone( ) */
-//    // mcu_sleep_control( );
-//
-//    // Even if we miss an event enabling USB, USB event would wake us up.
-//    //__WFE();
-//    // Clear SEV flag if CPU was woken up by event.
-//    //__SEV();
-//    //__WFE();
+//    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
+
+    LEDManager.run();
+    configuration_run();
+
+    NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
+
+    /* Control the sleep mode here */
+    /* We need a way of deciding on when we can go to sleep mode and when we should continue. */
+    /* When we have such process, we need to add it to the rf_glue.c mcu_sleep_postpone( ) */
+    // mcu_sleep_control( );
+
+    // Even if we miss an event enabling USB, USB event would wake us up.
+    //__WFE();
+    // Clear SEV flag if CPU was woken up by event.
+    //__SEV();
+    //__WFE();
 }
 
 static void gpio_output_voltage_setup(void)
@@ -448,55 +444,88 @@ static void init_gpio(void)
     nrf_gpio_pin_write(BSP_GPIO_nRST_KS, 0);
 }
 
-//// Lest implement the reset_mcu so that if we have something to write to the flash is goin to wait for the procedure to finish.
-//void reset_mcu(void)
-//{
-//    watchdog_timer.reset();
-//    configuration_save();
-//
-//    sd_softdevice_disable();  // Disable SD.
-//
-//    // Disable all interrupts
-//    NVIC->ICER[0] = 0xFFFFFFFF;
-//    NVIC->ICPR[0] = 0xFFFFFFFF;
-//#if (defined(__NRF_NVIC_ISER_COUNT) && (__NRF_NVIC_ISER_COUNT == 2))
-//    NVIC->ICER[1] = 0xFFFFFFFF;
-//    NVIC->ICPR[1] = 0xFFFFFFFF;
-//#endif
-//
-//    NRF_LOG_WARNING("<< Soft reset >>");
-//    NRF_LOG_FINAL_FLUSH();
-//    NVIC_SystemReset();  // Soft reset MCU.
-//
-//    // maybe yield ?
-//    while (1)
-//    {
-//        yield();
-//    }
-//}
+// Lest implement the reset_mcu so that if we have something to write to the flash is goin to wait for the procedure to finish.
+void reset_mcu(void)
+{
+    watchdog_timer.reset();
+    configuration_save();
+
+    sd_softdevice_disable();  // Disable SD.
+
+    // Disable all interrupts
+    NVIC->ICER[0] = 0xFFFFFFFF;
+    NVIC->ICPR[0] = 0xFFFFFFFF;
+#if (defined(__NRF_NVIC_ISER_COUNT) && (__NRF_NVIC_ISER_COUNT == 2))
+    NVIC->ICER[1] = 0xFFFFFFFF;
+    NVIC->ICPR[1] = 0xFFFFFFFF;
+#endif
+
+    NRF_LOG_WARNING("<< Soft reset >>");
+    NRF_LOG_FINAL_FLUSH();
+    NVIC_SystemReset();  // Soft reset MCU.
+
+    // maybe yield ?
+    while (1)
+    {
+        yield();
+    }
+}
 
 
 void yield(void)
 {
-//    watchdog_timer.reset();
+    watchdog_timer.reset();
 
-//#ifdef USE_TINYUSB
-//    TinyUSB_Device_FlushCDC();
-//#endif
-//
-//    if(ble_connected())
-//    {
-//        RawHID.flush();
-//    }
-//
-//    //FreeRTOS yield to other tasks
-//#ifdef USE_TINYUSB
-//    HID().SendLastReport();
-//    TinyUSB_Device_Task();
-//#endif
-//
-//    if(ble_innited() && FirmwareVersion.keyboard_is_wireless())
-//    {
-//        ble_run();
-//    }
+#ifdef USE_TINYUSB
+    TinyUSB_Device_FlushCDC();
+#endif
+
+    if(ble_connected())
+    {
+        RawHID.flush();
+    }
+
+    //FreeRTOS yield to other tasks
+#ifdef USE_TINYUSB
+    HID().SendLastReport();
+    TinyUSB_Device_Task();
+#endif
+
+    if(ble_innited() && FirmwareVersion.keyboard_is_wireless())
+    {
+        ble_run();
+    }
+}
+
+/************************************************************************/
+/*                     KBD Low Level Glue Functions                     */
+/************************************************************************/
+
+bool_t kbd_glue_left_wired_connected( void )
+{
+    return nrf_gpio_pin_read( BSP_GPIO_nRST_KS );
+}
+
+bool_t kbd_glue_right_wired_connected( void )
+{
+#warning "This needs to be considered. We are using 'true' now, to make the wired mode possible. Otherwise the wireless mode is set."
+    return true;
+}
+
+void kbd_glue_side_power_left_set( bool_t power )
+{
+    if (power)
+    {
+        nrf_gpio_cfg_input(BSP_GPIO_nRST_KS, NRF_GPIO_PIN_NOPULL);
+    }
+    else
+    {
+        nrf_gpio_cfg_output(BSP_GPIO_nRST_KS);
+        nrf_gpio_pin_write(BSP_GPIO_nRST_KS, power);
+    }
+}
+
+void kbd_glue_side_power_right_set( bool_t power )
+{
+    /* There is only one side in this project. We use the left side for its purpose */
 }

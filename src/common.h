@@ -31,6 +31,7 @@
 #define __COMMON_H__
 
 #include "stdint.h"
+#include "keyboard_config.h"
 
 // clang-format off
 

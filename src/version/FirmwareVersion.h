@@ -1,0 +1,123 @@
+/*
+ * FirmwareVersion -- Provide the version and system hardware configuration
+ *
+ * Copyright (C) 2020  Dygma Lab S.L.
+ *
+ * This program is free software: you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License as published by the Free Software
+ * Foundation, version 3.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see <http://www.gnu.org/licenses/>.
+ */
+
+#pragma once
+
+#include "Arduino.h"
+#include "Communications_protocol.h"
+#include "kbd_if.h"
+
+class FirmwareVersion
+{
+  public:
+    FirmwareVersion()
+    {
+    }
+
+//    bool need_update_;
+//    uint32_t start_time_{0};
+//    uint32_t configuration_timeout_{0};
+
+    result_t init();
+
+//    uint8_t get_device_name();
+//    String get_left_side_chip_id();
+//    uint64_t get_left_side_rf_chip_id();
+//    String get_right_side_chip_id();
+//    uint64_t get_right_side_rf_chip_id();
+//
+//    static char device_name[16];
+
+    enum class Device{
+        Defy,
+        Raise2,
+        ISO,
+        ANSI,
+        NONE,
+        Wireless,
+        Wired,
+        Sonshi
+    };
+
+    typedef struct PACK
+    {
+        uint8_t device_name;
+        uint8_t configuration;
+        uint8_t connection;
+//        uint64_t rf_gateway_chip_id;
+//        char chip_id_rp2040[20];
+#warning "The Keyscanner (nRF52833) chip id should be transferred and stored as uint64 value. We keep old-style string now for faster project start."
+        char ks_chip_id[20];        /* nRF52833 chip ID */
+    } keyscanner_spec_t;
+
+    typedef struct PACK
+    {
+        keyscanner_spec_t ks;
+//        keyscanner_spec_t ks_right;
+    } device_spec_t;
+
+//    static Device get_layout();
+
+    /*
+     * @brief Get the connection type
+     * @return true if the connection is wireless, false if it is wired
+     */
+    static bool keyboard_is_wireless();
+
+  private:
+    static const device_spec_t * p_device_spec;
+
+    kbdif_t * p_kbdif = NULL;
+    result_t kbdif_initialize(void);
+
+  private:
+
+//    enum request_t {
+//        LAYOUT,
+//        HARDWARE_NAME,
+//        CHIP_ID_LEFT,
+//        CHIP_ID_RIGHT,
+//        CHIP_ID_LEFT_RF,
+//        CHIP_ID_RIGHT_RF,
+//        CONNECTION_TYPE,
+//    };
+    /**
+    * @brief Checks the differences in specifications between the provided specification and the one stored in memory.
+    * This function compares the provided specifications with the specifications stored in memory.
+    * If the specifications differ, it returns true, otherwise it returns false.
+    * @param spec The specification to compare.
+    * @param side Indicates the side from which to retrieve the specifications stored in memory. true for the left side, false for the right side.
+    * @return true if there are differences in the specifications, false otherwise.
+     */
+    static bool are_specifications_diferences( Communications_protocol::Packet const &packet_check );
+
+//    static void check_and_send_specifications(request_t request) ;
+//
+//    static bool check_specifications_in_memory();
+//    static bool hardware_info_requested;
+//
+//    static bool memory_specifications_empty;
+
+    static const kbdif_handlers_t kbdif_handlers;
+    static kbdapi_event_result_t kbdif_command_event_cb( void * p_instance, const char * p_command );
+
+    static void cfgmem_keyscanner_spec_save( const keyscanner_spec_t * p_spec );
+//    static void cfgmem_keyscanner_spec_right_save( const keyscanner_spec_t * p_spec );
+};
+
+extern class FirmwareVersion FirmwareVersion;
