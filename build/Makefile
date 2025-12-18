@@ -541,8 +541,6 @@ $(BINARY_OUTPUT): $(OBJSC) $(OBJSCXX) $(OBJSA) $(OBJSa)
 	@echo "Creating application binaries ..."
 	$(OBJCOPY) -O binary $@.elf $@.bin
 	$(OBJCOPY) -O ihex $@.elf $@.hex
-	@echo "Creating final application binary ..."
-	python $(TOOLS_ROOT_DIR)/fw_package_builder.py $(RF_HOST_DEVICE_HEX) $@.hex $@_final.hex
 	@echo "Creating application binaries done."
 
 clean:
