@@ -5,29 +5,29 @@ GROUP(-lgcc -lc -lnosys)
 
 /* 
   FLASH:
-    ORIGIN = 0x2E000
-      The softdevice and rf_host_lib are located between addresses 0 and 0x2E000 - 1 so 
-      memory app starts at 0x2E000.
+    ORIGIN = 0x27000
+      The softdevice is located between addresses 0 and 0x27000 - 1 so 
+      memory app starts at 0x27000.
     
-    LENGTH = 0x44000
-      Total length of the app firmware, excluding the softdevice with rf_host_lib.
+    LENGTH = 0xC9000
+      Total length of the app firmware, excluding the softdevice.
       Following are the 3 reserved pages for FDS ans 2 pages for the EEPROM class.
       The last 9 pages of flash are for the bootloader, the MBR and bootloader
       data storage.
 
   RAM:
     ORIGIN = 0x20009400
-      The RAM memory starts at 0x20000000 and has a length of 0x20000 (128KB), 
-      but the softdevice + rf_host_lib uses the first 0x9400 Bytes.
+      The RAM memory starts at 0x20000000 and has a length of 0x40000 (256 KB), 
+      but the softdevice uses the first 0x5978 Bytes.
 
     LENGTH = 0x16C00
       0x20000 - 0x9400 Bytes for the softdevice = 0x16C00 Bytes.
 */
 MEMORY
 {  
-  FLASH (rx) : ORIGIN = 0x2E000, LENGTH = 0xC4000
-  /*FLASH (rx) : ORIGIN = 0x2E000, LENGTH = 0xCD000       /* No bootloader */
-  RAM (rwx) :  ORIGIN = 0x20009400, LENGTH = 0x36C00    /* s140 + rf_host_lib */  
+  FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xC9000
+  /*FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xD4000       /* No bootloader */
+  RAM (rwx) :  ORIGIN = 0x20005978, LENGTH = 0x3A688      /* s140 */  
 }
 
 SECTIONS
