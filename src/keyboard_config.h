@@ -29,12 +29,24 @@
 
 // LED definitions
 #warning "Defy backlight LED configuration is being used. Sonshi variant needs to be implemented"
+//#define APP_LEDS_BL_LEFT_CNT 35     /* The project's number of left-side backlight leds */
+//#define APP_LEDS_BL_RIGHT_CNT 35    /* The project's number of right-side backlight leds */
+//
+//#define APP_LEDS_BL_CNT     (APP_LEDS_BL_LEFT_CNT + APP_LEDS_BL_RIGHT_CNT)  /* The total number of backlight leds */
+//
+//#define APP_LEDS_CNT (APP_LEDS_BL_CNT)  /* The total number of project's leds */
+
 #define APP_LEDS_BL_LEFT_CNT 35     /* The project's number of left-side backlight leds */
+#define APP_LEDS_UG_LEFT_CNT 53     /* The project's number of left-side underglow leds */
 #define APP_LEDS_BL_RIGHT_CNT 35    /* The project's number of right-side backlight leds */
+#define APP_LEDS_UG_RIGHT_CNT 53    /* The project's number of right-side underglow leds */
+#define APP_LEDS_NEURON_CNT 2       /* The project's number of neuron leds */
 
 #define APP_LEDS_BL_CNT     (APP_LEDS_BL_LEFT_CNT + APP_LEDS_BL_RIGHT_CNT)  /* The total number of backlight leds */
+#define APP_LEDS_UG_CNT     (APP_LEDS_UG_LEFT_CNT + APP_LEDS_UG_RIGHT_CNT)  /* The total number of underglow leds */
 
-#define APP_LEDS_CNT (APP_LEDS_BL_CNT)  /* The total number of project's leds */
+#define APP_LEDS_CNT (APP_LEDS_BL_CNT + APP_LEDS_UG_CNT + APP_LEDS_NEURON_CNT)  /* The total number of project's leds */
+
 
 //#define LED_MAP {                                                                                                               \
 //    /*left side - 33 keys includes LP: key 19 is missing for ANSI layout*/                                                      \
