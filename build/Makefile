@@ -379,11 +379,11 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_ble.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_soc.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf_format.c
-#
+
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_clock.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_power.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_spis.c
-#
+
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_clock.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_power.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_ppi.c
