@@ -21,6 +21,9 @@
 
 #include "hidDefy.h"
 
+#warning "Temporary SONSHI usage definition needs to be added to hidDefy.h when we publicly announce the new Sonshi product."
+#define RAW_USAGE_SONSHI    0x01
+
 const uint8_t hid_report_descriptor_sonshi[] = HID_DEFY_REPORT_DESCRIPTOR( RAW_USAGE_SONSHI );
 
 void hid_report_descriptor_get( const uint8_t ** pp_desc, uint32_t * p_desc_len )
