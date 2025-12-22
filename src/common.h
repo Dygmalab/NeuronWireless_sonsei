@@ -37,6 +37,12 @@
 
 #define COMPILE_FOR_SONSHI_HARDWARE_V1_0      1
 
+#define ENABLE_UART_DEBUG_LOG                 0
+
+#if (ENABLE_UART_DEBUG_LOG != 0 )
+#warning "The DEBUG logs are enabled. Disable it for the release!!!"
+#endif /* ENABLE_UART_DEBUG_LOG */
+
 //#define TWI_MASTER_SCL_PIN   5
 //#define TWI_MASTER_SDA_PIN   4
 //#define TWI_MASTER_FLASH_CLK NRF_TWIM_FREQ_100K  /* flashing doesn't work reliably at higher clock speeds */
