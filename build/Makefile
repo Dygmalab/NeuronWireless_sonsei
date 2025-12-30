@@ -378,8 +378,8 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/nrf_assert.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_ble.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_soc.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf_format.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf_format.c
 
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_clock.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_power.c
@@ -397,10 +397,10 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_pwm.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/hal/nrf_nvmc.c
 #
 ## UART communication and NRF_LOG.
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/ringbuf/nrf_ringbuf.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_uart.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uart.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uarte.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/ringbuf/nrf_ringbuf.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_uart.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uart.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uarte.c
 SRCSC += $(wildcard $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/*.c)
 
 # Keyboard API
