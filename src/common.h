@@ -37,7 +37,7 @@
 
 #define COMPILE_FOR_SONSHI_HARDWARE_V1_0      1
 
-#define ENABLE_UART_DEBUG_LOG                 0
+#define ENABLE_UART_DEBUG_LOG                 1
 
 #if (ENABLE_UART_DEBUG_LOG != 0 )
 #warning "The DEBUG logs are enabled. Disable it for the release!!!"

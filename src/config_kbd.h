@@ -31,45 +31,33 @@ enum
     KEYMAP_ID_NUMPAD,
 };
 
-#warning "The default Keymap setup MUST be prepared for Sonshi"
-
 #define KALEIDOSCOPE_ADAPTER_KEYMAP_DEFAULT                                                                 __NL__ \
     [KEYMAP_ID_QWERTY] = KEYMAP_STACKED                                                                     __NL__ \
     (                                                                                                       __NL__ \
-        /* Left Side */                                                                                     __NL__ \
-        Key_Escape, Key_1, Key_2, Key_3, Key_4, Key_5, Key_6,                                               __NL__ \
-        Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T, Consumer_VolumeIncrement,                               __NL__ \
-        Key_CapsLock, Key_A, Key_S, Key_D, Key_F, Key_G, Consumer_VolumeDecrement,                          __NL__ \
-        Key_Backslash, Key_Z, Key_X, Key_C, Key_V, Key_B,                                                   __NL__ \
-        Key_LeftControl, Key_LeftGui, Key_Backspace, Key_Delete,                                            __NL__ \
-        Key_LeftShift, Key_LeftAlt, Key_Enter, Key_Space,                                                   __NL__ \
-                                                                                                            __NL__ \
-        /* Right Side */                                                                                    __NL__ \
-        Key_7, Key_8, Key_9, Key_0, Key_Minus, Key_Equals, Key_Backspace,                                   __NL__ \
-        Key_Y, Key_U, Key_I, Key_O, Key_P, Key_LeftBracket, Key_RightBracket,                               __NL__ \
-        Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote, Key_RightShift,                               __NL__ \
-        Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,                                     __NL__ \
-        Key_LEDEffectNext, Key_Home, Key_UpArrow, Key_End,                                                  __NL__ \
-        Key_RightArrow, Key_DownArrow, Key_LeftArrow, Key_Enter                                             __NL__ \
+        /* Row 0 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_Escape, Key_1, Key_2, Key_3, Key_4, Key_5,                                 Key_6, Key_7, Key_8, Key_9, Key_0, Key_Minus,                                    __NL__ \
+        /* Row 1 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_Tab, Key_Q, Key_W, Key_E, Key_R, Key_T,                                    Key_Y, Key_U, Key_I, Key_O, Key_P, Key_Equals,                                   __NL__ \
+        /* Row 2 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_CapsLock, Key_A, Key_S, Key_D, Key_F, Key_G,                               Key_H, Key_J, Key_K, Key_L, Key_Semicolon, Key_Quote,                            __NL__ \
+        /* Row 3 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_LeftShift, Key_Z, Key_X, Key_C, Key_V, Key_B,                              Key_N, Key_M, Key_Comma, Key_Period, Key_Slash, Key_RightShift,                  __NL__ \
+        /* Row 4 - Sonshi left side only (c0-c3, c8-c11 - c4-c7 don't exist) */                            __NL__ \
+        Key_LeftControl, Key_LeftGui, Key_LeftAlt, Key_Space,      Key_NoKey, Key_NoKey,    Key_NoKey, Key_NoKey,      Key_DownArrow, Key_UpArrow, Key_LeftArrow, Key_RightArrow __NL__ \
     ),                                                                                                      __NL__ \
                                                                                                             __NL__ \
     [KEYMAP_ID_NUMPAD] = KEYMAP_STACKED                                                                     __NL__ \
     (                                                                                                       __NL__ \
-        /* Left Side */                                                                                     __NL__ \
-        Key_Escape, Key_F1, Key_F2, Key_F3, Key_F4, Key_F5, Key_F6,                                         __NL__ \
-        Key_Tab, Key_NoKey, Key_UpArrow, Key_NoKey, Key_NoKey, Key_NoKey, Key_NoKey,                        __NL__ \
-        Key_CapsLock, Key_LeftArrow, Key_DownArrow, Key_RightArrow, Key_NoKey, Key_NoKey, Key_NoKey,        __NL__ \
-        Key_LeftShift, Key_Backslash, Key_NoKey, Key_NoKey, Key_NoKey, Key_NoKey,                           __NL__ \
-        Key_LeftControl, Key_LeftGui, Key_LeftAlt, Key_Space,                                               __NL__ \
-        Key_Space, Key_Backspace, Key_Enter, Key_Delete,                                                    __NL__ \
-                                                                                                            __NL__ \
-        /* Right Side */                                                                                    __NL__ \
-        Key_F7, Key_F8, Key_F9, Key_F10, Key_F11, Key_F12, Key_Backspace,                                   __NL__ \
-        Key_KeypadSubtract, Key_7, Key_8, Key_9, Key_KeypadDivide, Key_NoKey, Key_Enter,                    __NL__ \
-        Key_KeypadAdd, Key_4, Key_5, Key_6, Key_KeypadMultiply, Key_NoKey, Key_Backslash,                   __NL__ \
-        Key_KeypadDot, Key_1, Key_2, Key_3, Key_UpArrow, Key_RightShift,                                    __NL__ \
-        Key_0, Key_Space, Key_LeftArrow, Key_DownArrow,                                                     __NL__ \
-        Key_RightArrow, Key_RightControl, Key_Delete, MoveToLayer(KEYMAP_ID_QWERTY)                         __NL__ \
+        /* Row 0 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_Escape, Key_F1, Key_F2, Key_F3, Key_F4, Key_F5,        Key_F6, Key_F7, Key_F8, Key_F9, Key_F10, Key_F11,    __NL__ \
+        /* Row 1 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_Tab, Key_NoKey, Key_UpArrow, Key_NoKey, Key_NoKey, Key_NoKey,    Key_KeypadSubtract, Key_7, Key_8, Key_9, Key_KeypadDivide, Key_F12, __NL__ \
+        /* Row 2 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_CapsLock, Key_LeftArrow, Key_DownArrow, Key_RightArrow, Key_NoKey, Key_NoKey,    Key_KeypadAdd, Key_4, Key_5, Key_6, Key_KeypadMultiply, Key_Backspace, __NL__ \
+        /* Row 3 - Sonshi left side only (c0-c11) */                                                       __NL__ \
+        Key_LeftShift, Key_Backslash, Key_NoKey, Key_NoKey, Key_NoKey, Key_NoKey,    Key_KeypadDot, Key_1, Key_2, Key_3, Key_UpArrow, Key_Enter, __NL__ \
+        /* Row 4 - Sonshi left side only (c0-c3, c8-c11 - c4-c7 don't exist) */                            __NL__ \
+        Key_LeftControl, Key_LeftGui, Key_LeftAlt, Key_Space,      Key_NoKey, Key_NoKey,    Key_NoKey, Key_NoKey,      Key_LeftArrow, Key_DownArrow, Key_RightArrow, MoveToLayer(KEYMAP_ID_QWERTY) __NL__ \
     )
 
 #endif /* __CONFIG_KBD_H_ */

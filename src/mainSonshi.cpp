@@ -20,36 +20,22 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-//#include <stdbool.h>
-//#include <stddef.h>
-//#include <stdint.h>
-//
-//#ifdef __cplusplus
-//extern "C"
-//{
-//#endif
-//
-////#include "nordic_common.h"
-////#include "nrf.h"
-////#include "nrf_assert.h"
-////#include "nrf_drv_clock.h"
-////#include "nrf_drv_power.h"
-//#include "nrf_fstorage.h"
-#include "nrf_sdm.h"
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
-////#include "app_error.h"
-////#include "app_timer.h"
-////#include "nrf_delay.h"
+#include "nrf_sdm.h"
 #include "nrf_gpio.h"
 
-////// UART debug log
-////#include "nrf_log.h"
-////#include "nrf_log_ctrl.h"
-////#include "nrf_log_default_backends.h"
-//
-//#ifdef __cplusplus
-//}
-//#endif
+// UART debug log
+#include "nrf_log.h"
+#include "nrf_log_ctrl.h"
+#include "nrf_log_default_backends.h"
+
+#ifdef __cplusplus
+}
+#endif
 #include "Arduino.h"
 //#include "EEPROM.h"
 #include "Watchdog_timer.h"
