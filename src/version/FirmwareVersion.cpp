@@ -217,7 +217,7 @@ bool FirmwareVersion::keyboard_is_wireless()
         //ASSERT_DYGMA( false, "Invalid keyscanner connection capabilitie. Expected 'Device::Wireless'" );
     }
 
-    return false;
+    return true;
 }
 
 //bool FirmwareVersion::keyboard_is_wireless()
