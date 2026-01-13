@@ -199,7 +199,7 @@ INCDIR += -I$(LIB_ROOT_DIR)/Spi_slave/link/
 INCDIR += -I$(LIB_ROOT_DIR)/Status_leds/
 INCDIR += -I$(LIB_ROOT_DIR)/Time_counter/
 INCDIR += -I$(LIB_ROOT_DIR)/Twi_master/
-#INCDIR += -I$(LIB_ROOT_DIR)/UpgradeKeyscanner/include/
+INCDIR += -I$(LIB_ROOT_DIR)/UpgradeKeyscanner/include/
 INCDIR += -I$(LIB_ROOT_DIR)/UpgradeKeyscanner/src/
 INCDIR += -I$(LIB_ROOT_DIR)/utils/Do_once/
 #INCDIR += -I$(LIB_ROOT_DIR)/utils/Run_task_once/
@@ -253,7 +253,7 @@ INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/atomic_fifo/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/atomic_flags/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/balloc/
 #INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/bootloader/
-#INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/bootloader/dfu/
+INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/bootloader/dfu/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/delay/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/experimental_section_vars/
 INCDIR += -I$(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/fds/
@@ -309,7 +309,7 @@ SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_mutex.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_spi.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/heap.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/link_list.c
-#SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/utils/dl_crc32.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/utils/dl_crc32.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/utils/dl_utils.c
 ##SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/spi/link/spi_link_slave.c
 
@@ -332,10 +332,10 @@ SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/Spi_slave.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/SpiPort.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Status_leds/Status_leds.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Watchdog_timer/Watchdog_timer.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Twi_master/Twi_master.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Wire/Wire.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/KeyScannerFlasher.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/Upgrade.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Twi_master/Twi_master.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Wire/Wire.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/KeyScannerFlasher.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/Upgrade.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/CRC/CRC_wrapper.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
@@ -391,13 +391,13 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_power.c
 #SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_ppi.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_spis.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_timer.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_twim.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_twim.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/prs/nrfx_prs.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_pwm.c
 
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/hal/nrf_nvmc.c
-#
-## UART communication and NRF_LOG.
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/hal/nrf_nvmc.c
+
+# UART communication and NRF_LOG.
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/ringbuf/nrf_ringbuf.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/integration/nrfx/legacy/nrf_drv_uart.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/modules/nrfx/drivers/src/nrfx_uart.c
@@ -422,7 +422,7 @@ SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/MouseKeysDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
 
 # Kaleidoscope
-#SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/bootloader_util.cpp
+SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/bootloader_util.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Hand.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/KeyboardManager.cpp

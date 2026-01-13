@@ -94,7 +94,7 @@ extern "C"
 #include "LEDManager.h"
 #include "LEDPaletteRGBW.h"
 //#include "Radio_manager.h"
-//#include "Upgrade.h"
+#include "Upgrade.h"
 
 Watchdog_timer watchdog_timer;
 
@@ -365,9 +365,9 @@ void setup(void)
 //    result = RadioManager.init();
 //    ASSERT_DYGMA( result == RESULT_OK, "RadioManager.init failed!" );
 
-//    // Keyscanner Upgrade module
-//    result = Upgrade.init();
-//    ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
+    // Keyscanner Upgrade module
+    result = Upgrade.init();
+    ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
 
     // LED Manager
     result = LEDManager_init();
@@ -392,7 +392,7 @@ void loop()
     Communications.run();
     BleManager.run();
     Battery.run();
-//    Upgrade.run();
+    Upgrade.run();
 //    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
 
     LEDManager.run();
@@ -512,14 +512,14 @@ bool_t kbd_glue_right_wired_connected( void )
 
 void kbd_glue_side_power_left_set( bool_t power )
 {
-    if (power)
+    if (power == true)
     {
         nrf_gpio_cfg_input(BSP_GPIO_nRST_KS, NRF_GPIO_PIN_NOPULL);
     }
     else
     {
         nrf_gpio_cfg_output(BSP_GPIO_nRST_KS);
-        nrf_gpio_pin_write(BSP_GPIO_nRST_KS, power);
+        nrf_gpio_pin_write(BSP_GPIO_nRST_KS, 0);
     }
 }
 
