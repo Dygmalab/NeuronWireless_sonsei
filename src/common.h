@@ -31,6 +31,7 @@
 #define __COMMON_H__
 
 #include "stdint.h"
+#include "nrf_gpio.h"
 #include "keyboard_config.h"
 
 // clang-format off
@@ -62,10 +63,14 @@
     #define BSP_SPI_PORT_SPI1    1
 //    #define BSP_SPI_PORT_SPI2    0
 
-    #define BSP_SPI1_MISO   NRF_GPIO_PIN_MAP(0, 17)
-    #define BSP_SPI1_MOSI   NRF_GPIO_PIN_MAP(0, 15)
-    #define BSP_SPI1_CLK    NRF_GPIO_PIN_MAP(0, 13)
-    #define BSP_SPI1_CS     NRF_GPIO_PIN_MAP(0, 19)
+    #define BSP_SPI1_MISO       NRF_GPIO_PIN_MAP(0, 17)
+    #define BSP_SPI1_MOSI       NRF_GPIO_PIN_MAP(0, 15)
+    #define BSP_SPI1_CLK        NRF_GPIO_PIN_MAP(0, 13)
+    #define BSP_SPI1_CS         NRF_GPIO_PIN_MAP(0, 19)
+
+    /* TWI Port */
+    #define BSP_TWI_SCL_PIN     NRF_GPIO_PIN_MAP(0, 21)
+    #define BSP_TWI_SDA_PIN     NRF_GPIO_PIN_MAP(0, 22)
 
 #endif
 
