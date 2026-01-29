@@ -27,6 +27,10 @@
 
 #define SHORT_NAME "sonshi_wireless"
 
+// Keyscanner addressing. As there is just one side, we will use the same address both for left and right
+#define APP_KS_LEFT_BOOT_ADDRESS    0x5A
+#define APP_KS_RIGHT_BOOT_ADDRESS   APP_KS_LEFT_BOOT_ADDRESS
+
 // LED definitions - Sonshi configuration
 #define APP_LEDS_BL_LEFT_CNT 56     /* The project's number of left-side backlight leds */
 #define APP_LEDS_UG_LEFT_CNT 0     /* The project's number of left-side underglow leds */
