@@ -51,6 +51,9 @@
 #if COMPILE_FOR_SONSHI_HARDWARE_V1_0
     #define BSP_GPIO_nRST_KS    NRF_GPIO_PIN_MAP(0, 20)  /* nRESET signal OUT to keyscanner; HIGH = running, LOW = reset */
 
+    #define BSP_BAT_SW1         NRF_GPIO_PIN_MAP(0, 27)  /* Slide switch contacts 1 - 3 */
+    #define BSP_BAT_SW2         NRF_GPIO_PIN_MAP(0, 28)  /* Slide switch contacts 2 - 4 */
+
     #define LED_GREEN_PIN       NRF_GPIO_PIN_MAP(0, 30)
     #define LED_RED_PIN         NRF_GPIO_PIN_MAP(0, 29)
 

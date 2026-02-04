@@ -436,6 +436,8 @@ static void init_gpio(void)
 {
     // Configure pins as Inputs
     nrf_gpio_cfg_input(BSP_GPIO_BOOT, NRF_GPIO_PIN_PULLUP);
+    nrf_gpio_cfg_input(BSP_BAT_SW1, NRF_GPIO_PIN_PULLUP);
+    nrf_gpio_cfg_input(BSP_BAT_SW2, NRF_GPIO_PIN_PULLUP);
 
     nrf_gpio_cfg_output(BSP_GPIO_nRST_KS);
 
@@ -526,4 +528,14 @@ void kbd_glue_side_power_left_set( bool_t power )
 void kbd_glue_side_power_right_set( bool_t power )
 {
     /* There is only one side in this project. We use the left side for its purpose */
+}
+
+bool_t kbd_glue_slide_switch_position_usb( void )
+{
+    return ( nrf_gpio_pin_read( BSP_BAT_SW2 ) == 0 );
+}
+
+bool_t kbd_glue_slide_switch_position_ble( void )
+{
+    return ( nrf_gpio_pin_read( BSP_BAT_SW1 ) == 0 );
 }
