@@ -371,6 +371,7 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/timer/app_timer2.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/timer/drv_rtc.c
 
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/sortlist/nrf_sortlist.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/svc/nrf_svc_handler.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/app_error.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/app_error_handler_gcc.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/app_error_weak.c
@@ -378,7 +379,7 @@ SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/app_util_platform.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/util/nrf_assert.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_ble.c
-#SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_soc.c
+SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/components/softdevice/common/nrf_sdh_soc.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf.c
 SRCSC += $(SDK_NRF5_SDK_ROOT_DIR)/external/fprintf/nrf_fprintf_format.c
 
