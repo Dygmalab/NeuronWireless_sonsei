@@ -206,16 +206,16 @@ bool FirmwareVersion::are_specifications_diferences( Communications_protocol::Pa
 
 bool FirmwareVersion::keyboard_is_wireless()
 {
-    if(!configuration.configuration_receive)
-    {
-        //NRF_LOG_DEBUG("Configuration not received");
-        return false;
-    }
-
-    if( static_cast<Device>(p_device_spec->ks.connection) != Device::Wireless )
-    {
-        //ASSERT_DYGMA( false, "Invalid keyscanner connection capabilitie. Expected 'Device::Wireless'" );
-    }
+//    if(!configuration.configuration_receive)
+//    {
+//        //NRF_LOG_DEBUG("Configuration not received");
+//        return false;
+//    }
+//
+//    if( static_cast<Device>(p_device_spec->ks.connection) != Device::Wireless )
+//    {
+//        //ASSERT_DYGMA( false, "Invalid keyscanner connection capabilitie. Expected 'Device::Wireless'" );
+//    }
 
     return true;
 }
