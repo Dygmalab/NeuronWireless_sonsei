@@ -475,7 +475,9 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 DEFINES += -DCOMPILE_SONSHI_KEYBOARD=1
 
 # Sonshi Neuron version
-DEFINES += -DSONSHI_NEURON_FW_VERSION=\"v0.2.0\"
+#SONSHI_NEURON_FW_VERSION = "v0.2.0"
+SONSHI_NEURON_FW_VERSION = "v1.2.3-alpha.7"
+DEFINES += -DSONSHI_NEURON_FW_VERSION=\"${SONSHI_NEURON_FW_VERSION}\"
 
 # Sonshi firmware package version - Neuron + Keyscanner + RFGW
 ifdef SONSHI_FW_VERSION
@@ -546,6 +548,9 @@ $(BINARY_OUTPUT): $(OBJSC) $(OBJSCXX) $(OBJSA) $(OBJSa)
 	$(OBJCOPY) -O binary $@.elf $@.bin
 	$(OBJCOPY) -O ihex $@.elf $@.hex
 	@echo "Creating application binaries done."
+	@FW_START=`$(NM) $@.elf | grep __app_flash_origin | awk '{print "0x"$$1}'` ; \
+	python firmwareSealCreator.py -v ${SONSHI_NEURON_FW_VERSION} -ps $$FW_START -o $@ $@
+	@echo "Release sealed binary done."
 
 clean:
 	@echo "Cleaning $(APP_NAME) ..."
