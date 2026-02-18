@@ -510,7 +510,7 @@ DEFINES += -DHARDWARE_VERSION_NAME=\"Sonshi-wireless\"
 
 all: release
 
-release: COMMONFLAGS += -Os -s
+release: COMMONFLAGS += -Os
 #release: COMMONFLAGS += -O0 -g
 release: print_build_start $(BINARY_OUTPUT) print_build_end
 
