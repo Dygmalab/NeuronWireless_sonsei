@@ -475,8 +475,7 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 DEFINES += -DCOMPILE_SONSHI_KEYBOARD=1
 
 # Sonshi Neuron version
-#SONSHI_NEURON_FW_VERSION = "v0.2.0"
-SONSHI_NEURON_FW_VERSION = "v1.2.3-alpha.7"
+SONSHI_NEURON_FW_VERSION = "v0.2.0-alpha.2"
 DEFINES += -DSONSHI_NEURON_FW_VERSION=\"${SONSHI_NEURON_FW_VERSION}\"
 
 # Sonshi firmware package version - Neuron + Keyscanner + RFGW
