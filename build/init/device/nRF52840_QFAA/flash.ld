@@ -30,6 +30,10 @@ MEMORY
   RAM (rwx) :  ORIGIN = 0x20005978, LENGTH = 0x3A688      /* s140 */  
 }
 
+/* Export FLASH info */
+__app_flash_origin = ORIGIN(FLASH);
+__app_flash_length = LENGTH(FLASH);
+
 SECTIONS
 {
   . = ALIGN(4);
