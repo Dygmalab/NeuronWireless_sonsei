@@ -27,6 +27,7 @@ extern "C"
 
 #include "nrf_sdm.h"
 #include "nrf_gpio.h"
+#include "nrf_pwr_mgmt.h"
 
 // UART debug log
 #include "nrf_log.h"
@@ -319,9 +320,14 @@ static result_t LEDManager_init(void)
 void setup(void)
 {
     result_t result;
+    uint32_t err_code;
 
 //    // RF Host library
 //    rfhdev_api_init();
+
+    // Power management
+    err_code = nrf_pwr_mgmt_init( );
+    ASSERT_DYGMA( err_code == NRF_SUCCESS, "nrf_pwr_mgmt_init failed." );
 
     // GPIO
     gpio_output_voltage_setup();
@@ -381,6 +387,7 @@ void setup(void)
     HID().begin();
 
     UNUSED( result );
+    UNUSED( err_code );
 }
 
 void loop()
@@ -410,6 +417,8 @@ void loop()
     // Clear SEV flag if CPU was woken up by event.
     //__SEV();
     //__WFE();
+
+    nrf_pwr_mgmt_run();
 }
 
 static void gpio_output_voltage_setup(void)
