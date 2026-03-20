@@ -409,6 +409,7 @@ SRCSC += $(wildcard $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/*.c)
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_base.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_memory.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_if.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_timer_if.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/modules/kbd_if_manager.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/keyboard_api.c
 
