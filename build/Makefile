@@ -212,6 +212,8 @@ INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/
+INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/
+INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/system/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/memory/
 
@@ -303,9 +305,12 @@ SRCSC += $(LIB_ROOT_DIR)/Spi_slave/link/spi_link_slave.c
 SRCSC += $(LIB_ROOT_DIR)/Time_counter/Time_counter.c
 
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_mutex.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_pwr.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_spi.c
 
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/system/mcu.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_mutex.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_pwr.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_spi.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/heap.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/link_list.c
