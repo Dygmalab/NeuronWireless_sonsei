@@ -321,6 +321,8 @@ static result_t _kbdapi_init( void )
     result_t result = RESULT_ERR;
     kbdapi_config_t config;
 
+    config.kbdpwrif.sleep_postpone_fn = mcu_sleep_postpone;
+
     config.kbdtimif.set_ms_fn = timer_set_ms;
     config.kbdtimif.check_fn = timer_check;
 
