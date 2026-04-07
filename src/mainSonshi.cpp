@@ -323,6 +323,7 @@ static result_t _kbdapi_init( void )
 
     config.kbdpwrif.sleep_postpone_fn = mcu_sleep_postpone;
 
+    config.kbdtimif.get_system_ms_fn = timer_counter_get_millis;
     config.kbdtimif.set_ms_fn = timer_set_ms;
     config.kbdtimif.check_fn = timer_check;
 
