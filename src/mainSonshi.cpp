@@ -423,17 +423,6 @@ void loop()
     configuration_run();
 
     NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
-
-    /* Control the sleep mode here */
-    /* We need a way of deciding on when we can go to sleep mode and when we should continue. */
-    /* When we have such process, we need to add it to the rf_glue.c mcu_sleep_postpone( ) */
-    // mcu_sleep_control( );
-
-    // Even if we miss an event enabling USB, USB event would wake us up.
-    //__WFE();
-    // Clear SEV flag if CPU was woken up by event.
-    //__SEV();
-    //__WFE();
 }
 
 static void gpio_output_voltage_setup(void)
