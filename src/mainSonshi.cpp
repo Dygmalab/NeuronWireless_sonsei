@@ -94,6 +94,7 @@ extern "C"
 #include "LEDManager.h"
 #include "LEDPaletteRGBW.h"
 //#include "Radio_manager.h"
+#include "Status_leds.h"
 #include "Upgrade.h"
 
 Watchdog_timer watchdog_timer;
@@ -101,6 +102,8 @@ Watchdog_timer watchdog_timer;
 /*****************************************************/
 /*                    LED Manager                    */
 /*****************************************************/
+
+#define NEURON_LED_BRIGHTNESS 2
 
 /* LED Palette */
 #warning "Sonshi runs RGB diodes"
@@ -125,6 +128,9 @@ static LEDDevice_list_t LEDDevice_list =
 //{
 //    &LEDDeviceBL
 //};
+
+/* NOTE: We currently do not use the status leds to save battery power */
+// Status_leds status_leds( LED_GREEN_PIN, LED_RED_PIN );
 
 /*lint -save -e14 */
 void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On assert, the system can only recover with a reset.
@@ -547,6 +553,14 @@ void kbd_glue_side_power_right_set( bool_t power )
 {
     /* There is only one side in this project. We use the left side for its purpose */
 }
+
+void kbd_glue_status_leds_init( void )
+{
+    /* NOTE: We currently do not use the status leds to save battery power */
+//    status_leds.init();
+//    status_leds.static_green(NEURON_LED_BRIGHTNESS);
+}
+
 
 bool_t kbd_glue_slide_switch_position_usb( void )
 {
