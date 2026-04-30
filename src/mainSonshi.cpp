@@ -94,6 +94,7 @@ extern "C"
 #include "LEDManager.h"
 #include "LEDPaletteRGBW.h"
 //#include "Radio_manager.h"
+#include "Status_leds.h"
 #include "Upgrade.h"
 
 Watchdog_timer watchdog_timer;
@@ -101,6 +102,8 @@ Watchdog_timer watchdog_timer;
 /*****************************************************/
 /*                    LED Manager                    */
 /*****************************************************/
+
+#define NEURON_LED_BRIGHTNESS 2
 
 /* LED Palette */
 #warning "Sonshi runs RGB diodes"
@@ -125,6 +128,9 @@ static LEDDevice_list_t LEDDevice_list =
 //{
 //    &LEDDeviceBL
 //};
+
+/* NOTE: We currently do not use the status leds to save battery power */
+// Status_leds status_leds( LED_GREEN_PIN, LED_RED_PIN );
 
 /*lint -save -e14 */
 void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On assert, the system can only recover with a reset.
@@ -316,6 +322,24 @@ static result_t LEDManager_init(void)
     return result;
 }
 
+static result_t _kbdapi_init( void )
+{
+    result_t result = RESULT_ERR;
+    kbdapi_config_t config;
+
+    config.kbdpwrif.sleep_postpone_fn = mcu_sleep_postpone;
+
+    config.kbdtimif.get_system_ms_fn = timer_counter_get_millis;
+    config.kbdtimif.set_ms_fn = timer_set_ms;
+    config.kbdtimif.check_fn = timer_check;
+
+    result = kbdapi_init( &config );
+    EXIT_IF_ERR( result, "kbdapi_init failed!" );
+
+_EXIT:
+    return result;
+}
+
 void setup(void)
 {
     result_t result;
@@ -346,8 +370,8 @@ void setup(void)
     Communications.init();
 
     // Keyboard
-    result = kbdapi_init();
-    ASSERT_DYGMA( result == RESULT_OK, "kbdapi_init failed!" );
+    result = _kbdapi_init();
+    ASSERT_DYGMA( result == RESULT_OK, "_kbdapi_init failed!" );
 
     // Firmware version
     result = FirmwareVersion.init();
@@ -399,17 +423,6 @@ void loop()
     configuration_run();
 
     NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
-
-    /* Control the sleep mode here */
-    /* We need a way of deciding on when we can go to sleep mode and when we should continue. */
-    /* When we have such process, we need to add it to the rf_glue.c mcu_sleep_postpone( ) */
-    // mcu_sleep_control( );
-
-    // Even if we miss an event enabling USB, USB event would wake us up.
-    //__WFE();
-    // Clear SEV flag if CPU was woken up by event.
-    //__SEV();
-    //__WFE();
 }
 
 static void gpio_output_voltage_setup(void)
@@ -529,6 +542,14 @@ void kbd_glue_side_power_right_set( bool_t power )
 {
     /* There is only one side in this project. We use the left side for its purpose */
 }
+
+void kbd_glue_status_leds_init( void )
+{
+    /* NOTE: We currently do not use the status leds to save battery power */
+//    status_leds.init();
+//    status_leds.static_green(NEURON_LED_BRIGHTNESS);
+}
+
 
 bool_t kbd_glue_slide_switch_position_usb( void )
 {

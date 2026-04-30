@@ -212,6 +212,8 @@ INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/
+INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/
+INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/system/
 INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/
 #INCDIR += -I$(LIB_ROOT_DIR)/NRf_platform/middleware/memory/
 
@@ -303,9 +305,12 @@ SRCSC += $(LIB_ROOT_DIR)/Spi_slave/link/spi_link_slave.c
 SRCSC += $(LIB_ROOT_DIR)/Time_counter/Time_counter.c
 
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_mutex.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_pwr.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/hal/mcu/nrf52/hal_ll_nrf528xx_spi.c
 
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/drivers/system/mcu.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_mutex.c
+SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_pwr.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/halsep/hal_mcu_spi.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/heap.c
 SRCSC += $(LIB_ROOT_DIR)/NRf_platform/middleware/memory/link_list.c
@@ -409,6 +414,8 @@ SRCSC += $(wildcard $(SDK_NRF5_SDK_ROOT_DIR)/components/libraries/log/src/*.c)
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_base.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/falsep/kbd_memory.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_if.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_pwr_if.c
+SRCSC += $(KEYBOARD_API_ROOT_DIR)/interfaces/kbd_timer_if.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/modules/kbd_if_manager.c
 SRCSC += $(KEYBOARD_API_ROOT_DIR)/keyboard_api.c
 
@@ -421,6 +428,7 @@ SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/EEPROMKeymapDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/KbdInterface.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/LEDControlDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/MouseKeysDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/OneShotDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
 
 # Kaleidoscope
@@ -443,7 +451,6 @@ SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/HostPowerManagement.
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/LayerFocus.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/LEDControl/LEDUtils.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/MouseKeys/MouseWrapper.cpp
-SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/plugin/OneShot.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/Runtime.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/device.cpp
 #SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/LEDModeManager.cpp
