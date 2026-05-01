@@ -25,9 +25,9 @@
 
 #include "kbd_if_manager.h"
 
-#ifndef SONSHI_FW_VERSION
+#ifndef SONSEI_FW_VERSION
 #error "Firmware package version is not specified."
-    #define SONSHI_FW_VERSION "N/A"
+    #define SONSEI_FW_VERSION "N/A"
 #endif
 
 #define KS_CHIP_ID_END_PACKAGE 28
@@ -273,7 +273,7 @@ kbdapi_event_result_t FirmwareVersion::kbdif_command_event_cb( void * p_instance
     //NRF_LOG_DEBUG("read request: version");
 
     char cstr[70];
-    strcpy(cstr, SONSHI_FW_VERSION);
+    strcpy(cstr, SONSEI_FW_VERSION);
     ::Focus.sendRaw<char *>(cstr);
 
     return KBDAPI_EVENT_RESULT_CONSUMED;

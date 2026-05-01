@@ -2,7 +2,7 @@
 # Application name (project name)
 #-------------------------------------------------------------------------------
 
-APP_NAME = NeuronWireless_sonshi
+APP_NAME = NeuronWireless_sonsei
 
 #-------------------------------------------------------------------------------
 # Common, platform and project root directories
@@ -52,7 +52,7 @@ include $(PLATFORM_BUILD_DIR)/MakeDefsCommon.mk
 #-------------------------------------------------------------------------------
 
 # Hardware board name
-BSP_TARGET_BOARD = BSP_SONSHI_N2
+BSP_TARGET_BOARD = BSP_SONSEI_N2
 
 #-------------------------------------------------------------------------------
 # Include target MCU specific definitions
@@ -175,7 +175,7 @@ INCDIR += -I$(LIB_ROOT_DIR)/Ble_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/Ble_composite_dev/
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/common/
-$(warning The 'next' neuron device needs to be replaced by 'sonshi' after we publicly announce it.)
+$(warning The 'next' neuron device needs to be replaced by 'sonsei' after we publicly announce it.)
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/next/
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/
 INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
@@ -457,7 +457,7 @@ SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/device.cpp
 
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/common/Communication_model.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/common/Communications_side.cpp
-$(warning The 'next' neuron device needs to be replaced by 'sonshi' after we publicly announce it.)
+$(warning The 'next' neuron device needs to be replaced by 'sonsei' after we publicly announce it.)
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_ble.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_rf.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_wired.cpp
@@ -480,34 +480,34 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 # Main firmware defines
 #-------------------------------------------------------------------------------
 
-DEFINES += -DCOMPILE_SONSHI_KEYBOARD=1
+DEFINES += -DCOMPILE_SONSEI_KEYBOARD=1
 
-# Sonshi Neuron version
-SONSHI_NEURON_FW_VERSION = "v0.3.0-beta.3"
-DEFINES += -DSONSHI_NEURON_FW_VERSION=\"${SONSHI_NEURON_FW_VERSION}\"
+# Sonsei Neuron version
+SONSEI_NEURON_FW_VERSION = "v0.4.0"
+DEFINES += -DSONSEI_NEURON_FW_VERSION=\"${SONSEI_NEURON_FW_VERSION}\"
 
-# Sonshi firmware package version - Neuron + Keyscanner + RFGW
-ifdef SONSHI_FW_VERSION
-    DEFINES += -DSONSHI_FW_VERSION=\"${SONSHI_FW_VERSION}\"
+# Sonsei firmware package version - Neuron + Keyscanner + RFGW
+ifdef SONSEI_FW_VERSION
+    DEFINES += -DSONSEI_FW_VERSION=\"${SONSEI_FW_VERSION}\"
 else
-    DEFINES += -DSONSHI_FW_VERSION=\"v0.3.0-alpha\"			# Fixed "alpha" value to recognize local builds
+    DEFINES += -DSONSEI_FW_VERSION=\"v0.4.0-alpha\"			# Fixed "alpha" value to recognize local builds
 endif
 
 DEFINES += -DBOARD_VENDORID=0x35EF
 DEFINES += -DBOARD_MANUFACTURER=\"DYGMA\"
 
 DEFINES += -DBOARD_PRODUCTID=0x0031
-DEFINES += -DBOARD_PRODUCT=\"SONSHI\"
-DEFINES += -DUSB_PRODUCT=\"SONSHI\"
+DEFINES += -DBOARD_PRODUCT=\"SONSEI\"
+DEFINES += -DUSB_PRODUCT=\"SONSEI\"
 DEFINES += -DKALEIDOSCOPE_HARDWARE_H=\"kaleidoscope/device/dygma/keyboardManager/KeyboardManager.h\"
 
 DEFINES += -DKALEIDOSCOPE_LED_CONTROL_H=\"LEDControlDygma.h\"
 
 DEFINES += -DEEPROM_EMULATION_SIZE=8192
 
-DEFINES += -DBLE_DEVICE_NAME=\"Sonshi-BLE\"
+DEFINES += -DBLE_DEVICE_NAME=\"Sonsei-BLE\"
 
-DEFINES += -DHARDWARE_VERSION_NAME=\"Sonshi-wireless\"
+DEFINES += -DHARDWARE_VERSION_NAME=\"Sonsei-wireless\"
 
 #-------------------------------------------------------------------------------
 # Rules
@@ -556,7 +556,7 @@ $(BINARY_OUTPUT): $(OBJSC) $(OBJSCXX) $(OBJSA) $(OBJSa)
 	$(OBJCOPY) -O ihex $@.elf $@.hex
 	@echo "Creating application binaries done."
 	@FW_START=`$(NM) $@.elf | grep __app_flash_origin | awk '{print "0x"$$1}'` ; \
-	python firmwareSealCreator.py -v ${SONSHI_NEURON_FW_VERSION} -ps $$FW_START -o $@ $@
+	python firmwareSealCreator.py -v ${SONSEI_NEURON_FW_VERSION} -ps $$FW_START -o $@ $@
 	@echo "Release sealed binary done."
 
 clean:

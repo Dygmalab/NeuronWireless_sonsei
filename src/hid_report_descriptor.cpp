@@ -21,15 +21,15 @@
 
 #include "hidDefy.h"
 
-#warning "Temporary SONSHI usage definition needs to be added to hidDefy.h when we publicly announce the new Sonshi product."
-#define RAW_USAGE_SONSHI    0x01
+#warning "Temporary SONSEI usage definition needs to be added to hidDefy.h when we publicly announce the new Sonsei product."
+#define RAW_USAGE_SONSEI    0x01
 
-const uint8_t hid_report_descriptor_sonshi[] = HID_DEFY_REPORT_DESCRIPTOR( RAW_USAGE_SONSHI );
+const uint8_t hid_report_descriptor_sonsei[] = HID_DEFY_REPORT_DESCRIPTOR( RAW_USAGE_SONSEI );
 
 void hid_report_descriptor_get( const uint8_t ** pp_desc, uint32_t * p_desc_len )
 {
-    *pp_desc = &hid_report_descriptor_sonshi[0];
-    *p_desc_len = sizeof( hid_report_descriptor_sonshi );
+    *pp_desc = &hid_report_descriptor_sonsei[0];
+    *p_desc_len = sizeof( hid_report_descriptor_sonsei );
 }
 
 void hid_report_descriptor_usb_get( const uint8_t ** pp_desc, uint32_t * p_desc_len )

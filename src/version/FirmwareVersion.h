@@ -51,7 +51,7 @@ class FirmwareVersion
         NONE,
         Wireless,
         Wired,
-        Sonshi
+        Sonsei
     };
 
     typedef struct PACK

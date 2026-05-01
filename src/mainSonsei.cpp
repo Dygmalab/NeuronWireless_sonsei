@@ -1,5 +1,5 @@
 /*
- * mainSonshi.cpp -- Main entry point of the firmware
+ * mainSonsei.cpp -- Main entry point of the firmware
  *
  * About softdevice:
  *   -BLE module needs s140_nrf52_7.2.0_softdevice.hex to work.
@@ -106,11 +106,11 @@ Watchdog_timer watchdog_timer;
 #define NEURON_LED_BRIGHTNESS 2
 
 /* LED Palette */
-#warning "Sonshi runs RGB diodes"
+#warning "Sonsei runs RGB diodes"
 static class LEDPaletteRGBW LEDPaletteRGBW;
 
 /* LED Device List */
-#warning "We are yet using the Defy LED matrix. Sonshi matrix needs to replace this."
+#warning "We are yet using the Defy LED matrix. Sonsei matrix needs to replace this."
 static LEDDeviceRemote LEDDeviceLeftBL( LEDDevice::LED_DEVICE_TYPE_LEFT_BL, APP_LEDS_BL_LEFT_CNT );
 static LEDDeviceRemote LEDDeviceLeftUG( LEDDevice::LED_DEVICE_TYPE_LEFT_UG, APP_LEDS_UG_LEFT_CNT );
 static LEDDeviceRemote LEDDeviceRightBL( LEDDevice::LED_DEVICE_TYPE_RIGHT_BL, APP_LEDS_BL_RIGHT_CNT );
@@ -358,7 +358,7 @@ void setup(void)
     NRF_LOG_INIT(NULL);
     NRF_LOG_DEFAULT_BACKENDS_INIT();
 #endif
-    NRF_LOG_INFO("< N2 Sonshi nRF52840 >");
+    NRF_LOG_INFO("< N2 Sonsei nRF52840 >");
     NRF_LOG_INFO("Initializing...");
     NRF_LOG_FLUSH();
 

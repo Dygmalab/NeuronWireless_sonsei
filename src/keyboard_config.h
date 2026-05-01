@@ -23,15 +23,15 @@
 #pragma once
 #include <cstdint>
 
-#define KEYBOARD_NEURON_FW_VERSION SONSHI_NEURON_FW_VERSION
+#define KEYBOARD_NEURON_FW_VERSION SONSEI_NEURON_FW_VERSION
 
-#define SHORT_NAME "sonshi_wireless"
+#define SHORT_NAME "sonsei_wireless"
 
 // Keyscanner addressing. As there is just one side, we will use the same address both for left and right
 #define APP_KS_LEFT_BOOT_ADDRESS    0x5A
 #define APP_KS_RIGHT_BOOT_ADDRESS   APP_KS_LEFT_BOOT_ADDRESS
 
-// LED definitions - Sonshi configuration
+// LED definitions - Sonsei configuration
 #define APP_LEDS_BL_LEFT_CNT 56     /* The project's number of left-side backlight leds */
 #define APP_LEDS_UG_LEFT_CNT 0     /* The project's number of left-side underglow leds */
 #define APP_LEDS_BL_RIGHT_CNT 0    /* The project's number of right-side backlight leds */
@@ -82,7 +82,7 @@
 // Matrix definitions
 //#define MATRIX_ROWS 5
 //#define MATRIX_COLS 12
-//#warning "There is no left and right. Sonshi is a regular keyboard."
+//#warning "There is no left and right. Sonsei is a regular keyboard."
 //#define LEFT_COLUMNS 6
 
 #define MATRIX_ROWS 5

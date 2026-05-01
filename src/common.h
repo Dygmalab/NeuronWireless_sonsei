@@ -36,7 +36,7 @@
 
 // clang-format off
 
-#define COMPILE_FOR_SONSHI_HARDWARE_V1_0      1
+#define COMPILE_FOR_SONSEI_HARDWARE_V1_0      1
 
 #define ENABLE_UART_DEBUG_LOG                 1
 
@@ -44,7 +44,7 @@
 #warning "The DEBUG logs are enabled. Disable it for the release!!!"
 #endif /* ENABLE_UART_DEBUG_LOG */
 
-#if COMPILE_FOR_SONSHI_HARDWARE_V1_0
+#if COMPILE_FOR_SONSEI_HARDWARE_V1_0
     #define BSP_GPIO_nRST_KS    NRF_GPIO_PIN_MAP(0, 20)  /* nRESET signal OUT to keyscanner; HIGH = running, LOW = reset */
 
     #define BSP_BAT_SW1         NRF_GPIO_PIN_MAP(0, 27)  /* Slide switch contacts 1 - 3 */
