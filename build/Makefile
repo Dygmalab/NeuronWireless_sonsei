@@ -175,9 +175,8 @@ INCDIR += -I$(LIB_ROOT_DIR)/Ble_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/Ble_composite_dev/
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/
 INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/common/
-$(warning The 'next' neuron device needs to be replaced by 'sonsei' after we publicly announce it.)
-INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/next/
-INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/
+INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/
+INCDIR += -I$(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/com_models/
 INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/CRC/
 INCDIR += -I$(LIB_ROOT_DIR)/EEPROM/
@@ -459,13 +458,12 @@ SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope_internal/device.cpp
 
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/common/Communication_model.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/common/Communications_side.cpp
-$(warning The 'next' neuron device needs to be replaced by 'sonsei' after we publicly announce it.)
-SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_ble.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_rf.cpp
-SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/com_models/Communication_model_wired.cpp
-#SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/Communications_rf_pipe.cpp
-SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/CommunicationsN2.cpp
-SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/next/CommunicationsN2_side.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/com_models/Communication_model_ble.cpp
+#SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/com_models/Communication_model_rf.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/com_models/Communication_model_wired.cpp
+#SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/Communications_rf_pipe.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/CommunicationsN2.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/device/neuron/sonsei/CommunicationsN2_side.cpp
 
 #SRCSCXX += $(LIB_ROOT_DIR)/Communications/src/Communications_protocol_rf.cpp
 
