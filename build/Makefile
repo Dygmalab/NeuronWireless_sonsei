@@ -483,14 +483,14 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 DEFINES += -DCOMPILE_SONSEI_KEYBOARD=1
 
 # Sonsei Neuron version
-SONSEI_NEURON_FW_VERSION = "v0.4.0"
+SONSEI_NEURON_FW_VERSION = "v1.0.0-beta"
 DEFINES += -DSONSEI_NEURON_FW_VERSION=\"${SONSEI_NEURON_FW_VERSION}\"
 
 # Sonsei firmware package version - Neuron + Keyscanner + RFGW
 ifdef SONSEI_FW_VERSION
     DEFINES += -DSONSEI_FW_VERSION=\"${SONSEI_FW_VERSION}\"
 else
-    DEFINES += -DSONSEI_FW_VERSION=\"v0.4.0-alpha\"			# Fixed "alpha" value to recognize local builds
+    DEFINES += -DSONSEI_FW_VERSION=\"v1.0.0-alpha\"			# Fixed "alpha" value to recognize local builds
 endif
 
 DEFINES += -DBOARD_VENDORID=0x35EF
