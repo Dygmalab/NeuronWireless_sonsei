@@ -92,7 +92,7 @@ extern "C"
 #include "DynamicMacrosDygma.h"
 #include "LEDDevice-Remote.h"
 #include "LEDManager.h"
-#include "LEDPaletteRGBW.h"
+#include "LEDPaletteRGB.h"
 //#include "Radio_manager.h"
 #include "Status_leds.h"
 #include "Upgrade.h"
@@ -106,8 +106,7 @@ Watchdog_timer watchdog_timer;
 #define NEURON_LED_BRIGHTNESS 2
 
 /* LED Palette */
-#warning "Sonsei runs RGB diodes"
-static class LEDPaletteRGBW LEDPaletteRGBW;
+static class LEDPaletteRGB LEDPaletteRGB;
 
 /* LED Device List */
 static LEDDeviceRemote LEDDeviceBL( LEDDevice::LED_DEVICE_TYPE_KS_BL, APP_LEDS_BL_CNT );
@@ -301,7 +300,7 @@ static result_t LEDManager_init(void)
     result_t result = RESULT_ERR;
     LEDManager::LEDManager_init_config_t config;
 
-    config.p_LEDPalette = &LEDPaletteRGBW;
+    config.p_LEDPalette = &LEDPaletteRGB;
     config.p_LEDDevice_list = &LEDDevice_list;
 
     result = LEDManager.init( config );
