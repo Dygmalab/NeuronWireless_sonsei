@@ -71,6 +71,10 @@
     #define BSP_TWI_SCL_PIN     NRF_GPIO_PIN_MAP(0, 21)
     #define BSP_TWI_SDA_PIN     NRF_GPIO_PIN_MAP(0, 22)
 
+    #define DEFAULT_TRUE_SLEEP_TIME_MS          (10 * 60 * 1000)       /* 10 minutes */
+    #define DEFAULT_LEDS_OFF_WIRED_TIME_MS      (5 * 60 * 1000)   /*  5 minutes */
+    #define DEFAULT_LEDS_OFF_WIRELESS_TIME_MS   (1 * 60 * 1000) /*  1 minute  */
+
 #endif
 
 #endif  /* __COMMON_H__ */
