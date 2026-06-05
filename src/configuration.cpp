@@ -26,7 +26,7 @@
 #include "KeyRoleManager.h"
 #include "LEDLayers.h"
 #include "LEDManager.h"
-#include "LEDPaletteRGBW.h"
+#include "LEDPaletteRGB.h"
 #include "MouseKeysDygma.h"
 #include "QukeysDygma.h"
 #include "SuperkeysHandler.h"
@@ -43,7 +43,7 @@ typedef struct PACK __attribute__((aligned(4)))
     kaleidoscope::plugin::DynamicMacros::macros_config_t macros;
 
     LEDManager::ledmanager_conf_t ledmanager;
-    LEDPaletteRGBW::palette_config_t palette;
+    LEDPaletteRGB::palette_config_t palette;
     LEDLayers::colormap_config_t colormap;
 
     Battery::battery_conf_t battery;

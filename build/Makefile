@@ -332,7 +332,7 @@ SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/effects/LEDEffect-SolidColor-Defy.cp
 SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/effects/LEDEffect-Stalker-Defy.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/LEDManager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/palette/LEDPalette.cpp
-SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/palette/LEDPaletteRGBW.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/NeuronLedLibrary/palette/LEDPaletteRGB.cpp
 
 SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/Spi_slave.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Spi_slave/SpiPort.cpp

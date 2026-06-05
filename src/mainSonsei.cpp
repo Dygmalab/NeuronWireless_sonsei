@@ -92,7 +92,7 @@ extern "C"
 #include "DynamicMacrosDygma.h"
 #include "LEDDevice-Remote.h"
 #include "LEDManager.h"
-#include "LEDPaletteRGBW.h"
+#include "LEDPaletteRGB.h"
 //#include "Radio_manager.h"
 #include "Status_leds.h"
 #include "Upgrade.h"
@@ -106,28 +106,15 @@ Watchdog_timer watchdog_timer;
 #define NEURON_LED_BRIGHTNESS 2
 
 /* LED Palette */
-#warning "Sonsei runs RGB diodes"
-static class LEDPaletteRGBW LEDPaletteRGBW;
+static class LEDPaletteRGB LEDPaletteRGB;
 
 /* LED Device List */
-#warning "We are yet using the Defy LED matrix. Sonsei matrix needs to replace this."
-static LEDDeviceRemote LEDDeviceLeftBL( LEDDevice::LED_DEVICE_TYPE_LEFT_BL, APP_LEDS_BL_LEFT_CNT );
-static LEDDeviceRemote LEDDeviceLeftUG( LEDDevice::LED_DEVICE_TYPE_LEFT_UG, APP_LEDS_UG_LEFT_CNT );
-static LEDDeviceRemote LEDDeviceRightBL( LEDDevice::LED_DEVICE_TYPE_RIGHT_BL, APP_LEDS_BL_RIGHT_CNT );
-static LEDDeviceRemote LEDDeviceRightUG( LEDDevice::LED_DEVICE_TYPE_RIGHT_UG, APP_LEDS_UG_RIGHT_CNT );
-static LEDDevice       LEDDeviceNeuron( LEDDevice::LED_DEVICE_TYPE_NEURON, APP_LEDS_NEURON_CNT );
+static LEDDeviceRemote LEDDeviceBL( LEDDevice::LED_DEVICE_TYPE_KS_BL, APP_LEDS_BL_CNT );
 
 static LEDDevice_list_t LEDDevice_list =
 {
-    &LEDDeviceLeftBL, &LEDDeviceRightBL, &LEDDeviceLeftUG, &LEDDeviceRightUG, &LEDDeviceNeuron
+    &LEDDeviceBL
 };
-
-//static LEDDeviceRemote LEDDeviceBL( LEDDevice::LED_DEVICE_TYPE_KS_BL, APP_LEDS_BL_LEFT_CNT );
-//
-//static LEDDevice_list_t LEDDevice_list =
-//{
-//    &LEDDeviceBL
-//};
 
 /* NOTE: We currently do not use the status leds to save battery power */
 // Status_leds status_leds( LED_GREEN_PIN, LED_RED_PIN );
@@ -313,7 +300,7 @@ static result_t LEDManager_init(void)
     result_t result = RESULT_ERR;
     LEDManager::LEDManager_init_config_t config;
 
-    config.p_LEDPalette = &LEDPaletteRGBW;
+    config.p_LEDPalette = &LEDPaletteRGB;
     config.p_LEDDevice_list = &LEDDevice_list;
 
     result = LEDManager.init( config );
