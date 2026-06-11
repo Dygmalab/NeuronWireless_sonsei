@@ -490,7 +490,7 @@ DEFINES += -DSONSEI_NEURON_FW_VERSION=\"${SONSEI_NEURON_FW_VERSION}\"
 ifdef SONSEI_FW_VERSION
     DEFINES += -DSONSEI_FW_VERSION=\"${SONSEI_FW_VERSION}\"
 else
-    DEFINES += -DSONSEI_FW_VERSION=\"v1.0.0-alpha\"			# Fixed "alpha" value to recognize local builds
+    DEFINES += -DSONSEI_FW_VERSION=\"v1.0.2-alpha\"			# Fixed "alpha" value to recognize local builds
 endif
 
 DEFINES += -DBOARD_VENDORID=0x35EF
