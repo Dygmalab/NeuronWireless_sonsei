@@ -48,7 +48,7 @@ typedef struct PACK __attribute__((aligned(4)))
 
     Battery::battery_conf_t battery;
 
-    BleManager::connections_config_t ble_connections;
+    BleManager::config_t ble;
 
 } config_cache_t;
 
@@ -90,7 +90,7 @@ static result_t _cfg_item_request_cb( ConfigManager::cfg_item_type_t item_type, 
 
         case ConfigManager::CFG_ITEM_TYPE_BLE_CONNECTIONS:
 
-            *pp_item = &config_cache.ble_connections;
+            *pp_item = &config_cache.ble;
 
             break;
 

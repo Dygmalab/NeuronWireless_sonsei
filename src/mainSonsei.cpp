@@ -480,7 +480,7 @@ void yield(void)
     TinyUSB_Device_FlushCDC();
 #endif
 
-    if(ble_connected())
+    if(BleManager.is_connected())
     {
         RawHID.flush();
     }
@@ -491,9 +491,9 @@ void yield(void)
     TinyUSB_Device_Task();
 #endif
 
-    if(ble_innited() && FirmwareVersion.keyboard_is_wireless())
+    if(BleManager.is_enabled() && FirmwareVersion.keyboard_is_wireless())
     {
-        ble_run();
+        BleManager.run();
     }
 }
 
