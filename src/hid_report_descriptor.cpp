@@ -21,9 +21,6 @@
 
 #include "hidDefy.h"
 
-#warning "Temporary SONSEI usage definition needs to be added to hidDefy.h when we publicly announce the new Sonsei product."
-#define RAW_USAGE_SONSEI    0x01
-
 const uint8_t hid_report_descriptor_sonsei[] = HID_DEFY_REPORT_DESCRIPTOR( RAW_USAGE_SONSEI );
 
 void hid_report_descriptor_get( const uint8_t ** pp_desc, uint32_t * p_desc_len )
@@ -35,7 +32,7 @@ void hid_report_descriptor_get( const uint8_t ** pp_desc, uint32_t * p_desc_len 
 void hid_report_descriptor_usb_get( const uint8_t ** pp_desc, uint32_t * p_desc_len )
 {
     /* Dummy generic inout part of the descriptor for determining its size */
-    const uint8_t sizeRawHID[] = {TUD_HID_REPORT_DESC_GENERIC_INOUT(OUTPUT_REPORT_LEN_RAW, HID_REPORT_ID(RAW_USAGE_UNKNOWN))};
+    const uint8_t sizeRawHID[] = {TUD_HID_REPORT_DESC_GENERIC_INOUT(BLE_OUTPUT_REPORT_LEN_RAW, HID_REPORT_ID(RAW_USAGE_UNKNOWN))};
 
     /* Get the valid descriptor */
     hid_report_descriptor_get( pp_desc, p_desc_len );
