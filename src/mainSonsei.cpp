@@ -167,7 +167,8 @@ void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On ass
     }
 #endif
 
-    configuration_save();
+#warning "Missing the configuration safe"
+//    configuration_save();
     NRF_LOG_FINAL_FLUSH();
 
     __disable_irq();
@@ -448,7 +449,9 @@ static void init_gpio(void)
 void reset_mcu(void)
 {
     watchdog_timer.reset();
-    configuration_save();
+
+#warning "Missing the configuration safe"
+//    configuration_save();
 
     sd_softdevice_disable();  // Disable SD.
 

@@ -174,10 +174,11 @@ _EXIT:
     return result;
 }
 
-void configuration_save( void )
-{
-    ConfigManager.config_save_now();
-}
+#warning "ConfigManager.config_save_now is deprecated. We need to find a new way of system-reset config-save"
+//void configuration_save( void )
+//{
+//    ConfigManager.config_save_now();
+//}
 
 void configuration_run()
 {

@@ -21,6 +21,6 @@
 #include "dl_middleware.h"
 
 extern result_t configuration_init( void );
-extern void configuration_save( void );
+//extern void configuration_save( void );
 extern void configuration_run();
 
