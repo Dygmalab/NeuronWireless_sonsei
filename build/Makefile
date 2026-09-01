@@ -344,6 +344,7 @@ SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/KeyScannerFlasher.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/Upgrade.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/CRC/CRC_wrapper.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_hmi.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/RF_manager/Radio_manager.cpp
