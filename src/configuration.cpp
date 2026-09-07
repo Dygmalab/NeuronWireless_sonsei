@@ -17,7 +17,7 @@
  */
 
 #include "Battery.h"
-#include "Ble_manager.h"
+#include "Ble_config.h"
 #include "configuration.h"
 #include "Config_manager.h"
 #include "DynamicMacrosDygma.h"
@@ -48,7 +48,7 @@ typedef struct PACK __attribute__((aligned(4)))
 
     Battery::battery_conf_t battery;
 
-    BleManager::config_t ble;
+    BleConfig::ble_config_t ble;
 
 } config_cache_t;
 
