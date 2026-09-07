@@ -189,6 +189,7 @@ INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/src/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/src/BatteryStatus/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/LedModeSerializable/src/BatteryStatus/Standard-keyboards/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/palette/
+INCDIR += -I$(LIB_ROOT_DIR)/Overlay/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/rf_host_device/includes/
 #INCDIR += -I$(LIB_ROOT_DIR)/rf_host_device/rf_host_device/includes/middleware/
@@ -346,6 +347,7 @@ SRCSCXX += $(LIB_ROOT_DIR)/CRC/CRC_wrapper.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Overlay/OverlayProcessing.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/RF_manager/Radio_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/utils/Timer/Timer.cpp
 
@@ -430,7 +432,6 @@ SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/KbdInterface.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/LEDControlDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/MouseKeysDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/OneShotDygma.cpp
-SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/OverlayKeyDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
 
 # Kaleidoscope
