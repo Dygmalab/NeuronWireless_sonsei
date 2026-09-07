@@ -90,7 +90,7 @@ extern "C"
 #include "Ble_manager.h"
 #include "configuration.h"
 #include "DynamicMacrosDygma.h"
-#include "OverlayKeyDygma.h"
+#include "OverlayProcessing.h"
 #include "LEDDevice-Remote.h"
 #include "LEDManager.h"
 #include "LEDPaletteRGB.h"
@@ -382,6 +382,10 @@ void setup(void)
     result = Upgrade.init();
     ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
 
+    // Overlay keys
+    result = OverlayProcessing.init();
+    ASSERT_DYGMA( result == RESULT_OK, "OverlayProcessing.init failed!" );
+
     // LED Manager
     result = LEDManager_init();
     ASSERT_DYGMA( result == RESULT_OK, "LEDManager_init failed!" );
@@ -406,6 +410,7 @@ void loop()
     BleManager.run();
     Battery.run();
     Upgrade.run();
+    OverlayProcessing.run();
 //    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
 
     LEDManager.run();
