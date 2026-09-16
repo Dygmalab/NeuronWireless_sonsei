@@ -500,10 +500,13 @@ void yield(void)
     TinyUSB_Device_Task();
 #endif
 
-    if(BleManager.is_enabled() && FirmwareVersion.keyboard_is_wireless())
-    {
-        BleManager.run();
-    }
+    /*
+     * Testing the removal of the BleManager from the yield. Remove this completely after proven
+     */
+//    if(BleManager.is_enabled() && FirmwareVersion.keyboard_is_wireless())
+//    {
+//        BleManager.run();
+//    }
 }
 
 /************************************************************************/
