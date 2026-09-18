@@ -91,6 +91,7 @@ extern "C"
 #include "configuration.h"
 #include "DynamicMacrosDygma.h"
 #include "OverlayProcessing.h"
+#include "Kbd_manager.h"
 #include "LEDDevice-Remote.h"
 #include "LEDManager.h"
 #include "LEDPaletteRGB.h"
@@ -355,12 +356,16 @@ void setup(void)
     result = configuration_init();
     ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
 
-    // Initialize the communications before Kaleidoscope to make sure the correct order of the incoming message processing
-    Communications.init();
-
     // Keyboard
     result = _kbdapi_init();
     ASSERT_DYGMA( result == RESULT_OK, "_kbdapi_init failed!" );
+
+    // Communications
+    Communications.init();
+
+    // Keyboard manager
+    result = kbdManager.init();
+    ASSERT_DYGMA( result == RESULT_OK, "Kbd_manager.init failed!" );
 
     // Firmware version
     result = FirmwareVersion.init();

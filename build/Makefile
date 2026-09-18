@@ -181,6 +181,7 @@ INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/CRC/
 INCDIR += -I$(LIB_ROOT_DIR)/EEPROM/
 INCDIR += -I$(LIB_ROOT_DIR)/Fifo_buffer/
+INCDIR += -I$(LIB_ROOT_DIR)/Kbd_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/effects/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/layers/
@@ -349,6 +350,8 @@ SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_config.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_hmi.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_commands.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Overlay/OverlayProcessing.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/RF_manager/Radio_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/utils/Timer/Timer.cpp
@@ -439,7 +442,6 @@ SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
 # Kaleidoscope
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/bootloader_util.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Hand.cpp
-SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/KeyboardManager.cpp
 
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/key_events.cpp
