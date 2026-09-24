@@ -88,7 +88,7 @@ extern "C"
 #include "keyboard_api.h"
 #include "Battery.h"
 #include "Ble_manager.h"
-#include "configuration.h"
+#include "Config_manager.h"
 #include "DynamicMacrosDygma.h"
 #include "OverlayProcessing.h"
 #include "Kbd_manager.h"
@@ -353,8 +353,8 @@ void setup(void)
     NRF_LOG_FLUSH();
 
     // Initialize the System Configuration
-    result = configuration_init();
-    ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
+    result = ConfigManager.init();
+    ASSERT_DYGMA( result == RESULT_OK, "ConfigManager.init failed" );
 
     // Keyboard
     result = _kbdapi_init();
@@ -419,7 +419,7 @@ void loop()
 //    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
 
     LEDManager.run();
-    configuration_run();
+    ConfigManager.run();
 
     NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
 }
