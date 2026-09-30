@@ -425,7 +425,10 @@ SRCSC += $(KEYBOARD_API_ROOT_DIR)/keyboard_api.c
 # Kaleidoscope FAL (Framework Abstraction Layer)
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_base.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/fal/ll/kbdfal_ll_memory.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/AutoshiftDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/BaseDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/CapsWordDygma.cpp
+SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/CombosDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/DynamicMacrosDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/EEPROMKeymapDygma.cpp
 SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/KbdInterface.cpp
@@ -485,14 +488,14 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 DEFINES += -DCOMPILE_SONSEI_KEYBOARD=1
 
 # Sonsei Neuron version
-SONSEI_NEURON_FW_VERSION = "v1.0.0"
+SONSEI_NEURON_FW_VERSION = "v1.1.0"
 DEFINES += -DSONSEI_NEURON_FW_VERSION=\"${SONSEI_NEURON_FW_VERSION}\"
 
 # Sonsei firmware package version - Neuron + Keyscanner + RFGW
 ifdef SONSEI_FW_VERSION
     DEFINES += -DSONSEI_FW_VERSION=\"${SONSEI_FW_VERSION}\"
 else
-    DEFINES += -DSONSEI_FW_VERSION=\"v1.0.2-alpha\"			# Fixed "alpha" value to recognize local builds
+    DEFINES += -DSONSEI_FW_VERSION=\"v1.2.0-alpha\"			# Fixed "alpha" value to recognize local builds
 endif
 
 DEFINES += -DBOARD_VENDORID=0x35EF

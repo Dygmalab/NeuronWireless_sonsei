@@ -16,8 +16,11 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "AutoshiftDygma.h"
 #include "Battery.h"
 #include "Ble_manager.h"
+#include "CapsWordDygma.h"
+#include "CombosDygma.h"
 #include "configuration.h"
 #include "Config_manager.h"
 #include "DynamicMacrosDygma.h"
@@ -50,7 +53,17 @@ typedef struct PACK __attribute__((aligned(4)))
 
     BleManager::connections_config_t ble_connections;
 
+    kaleidoscope::plugin::AutoshiftDygma::autoshift_config_t autoshift;
+    kaleidoscope::plugin::CapsWordTriggerDygma::capsword_config_t capsword;
+    kaleidoscope::plugin::CombosDygma::combos_config_t combos;
+
 } config_cache_t;
+
+
+#define CONFIG_CACHE_MAX_SIZE   8192
+
+static_assert( sizeof( config_cache_t ) <= CONFIG_CACHE_MAX_SIZE,
+               "config_cache_t does not fit in the flash storage region" );
 
 static config_cache_t config_cache;
 
@@ -141,6 +154,24 @@ static result_t _cfg_item_request_kbdmem_cb( kbdmem_item_type_t item_type, const
         case KBDMEM_ITEM_TYPE_MACROS:
 
             *pp_item = &config_cache.macros;
+
+            break;
+
+        case KBDMEM_ITEM_TYPE_AUTOSHIFT:
+
+            *pp_item = &config_cache.autoshift;
+
+            break;
+
+        case KBDMEM_ITEM_TYPE_CAPSWORD:
+
+            *pp_item = &config_cache.capsword;
+
+            break;
+
+        case KBDMEM_ITEM_TYPE_COMBOS:
+
+            *pp_item = &config_cache.combos;
 
             break;
 

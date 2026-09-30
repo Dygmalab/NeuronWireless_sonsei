@@ -381,7 +381,10 @@ void setup(void)
     result = Upgrade.init();
     ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
 
-    // Overlay keys
+    // Overlay keys and layer notifications to Dygma-Lens over Raw HID.
+    // Must be registered before the LED Manager: the kbdif manager stops at the
+    // first interface that consumes an event, and the LED Manager consumes the
+    // layer change.
     result = OverlayProcessing.init();
     ASSERT_DYGMA( result == RESULT_OK, "OverlayProcessing.init failed!" );
 
