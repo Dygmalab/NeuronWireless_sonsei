@@ -349,6 +349,7 @@ SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_config.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_hmi.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_image.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_commands.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_manager.cpp
