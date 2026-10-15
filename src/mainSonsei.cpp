@@ -509,7 +509,10 @@ void yield(void)
      * The BleManager.run() is still needed to be run in the yield function due to the modules like "Macros" still using blocking
      * delays which internally call the yield for their proper functionality
      */
-    BleManager.run();
+    if( FirmwareVersion.keyboard_is_wireless() == true && BleManager.is_enabled() == true )
+    {
+        BleManager.run();
+    }
 }
 
 /************************************************************************/
