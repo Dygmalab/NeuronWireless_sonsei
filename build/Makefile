@@ -181,6 +181,7 @@ INCDIR += -I$(LIB_ROOT_DIR)/Config_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/CRC/
 INCDIR += -I$(LIB_ROOT_DIR)/EEPROM/
 INCDIR += -I$(LIB_ROOT_DIR)/Fifo_buffer/
+INCDIR += -I$(LIB_ROOT_DIR)/Kbd_manager/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/effects/
 INCDIR += -I$(LIB_ROOT_DIR)/NeuronLedLibrary/layers/
@@ -345,8 +346,13 @@ SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/KeyScannerFlasher.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/UpgradeKeyscanner/src/Upgrade.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/CRC/CRC_wrapper.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Battery_manager/Battery.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_config.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_hmi.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Ble_manager/Ble_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_image.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Config_manager/Config_manager.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_commands.cpp
+SRCSCXX += $(LIB_ROOT_DIR)/Kbd_manager/Kbd_manager.cpp
 SRCSCXX += $(LIB_ROOT_DIR)/Overlay/OverlayProcessing.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/RF_manager/Radio_manager.cpp
 #SRCSCXX += $(LIB_ROOT_DIR)/utils/Timer/Timer.cpp
@@ -440,7 +446,6 @@ SRCSCXX += $(KALEIDOSCOPE_ADAPTER_ROOT_DIR)/plugins/QukeysDygma.cpp
 # Kaleidoscope
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/bootloader_util.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Hand.cpp
-SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/universalModules/Focus.cpp
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/device/dygma/keyboardManager/KeyboardManager.cpp
 
 SRCSCXX += $(KALEIDOSCOPE_ROOT_DIR)/src/kaleidoscope/key_events.cpp
@@ -488,14 +493,14 @@ SRCSCXX += $(KEYBOARDIO_HID_ROOT_DIR)/src/HIDReportObserver.cpp
 DEFINES += -DCOMPILE_SONSEI_KEYBOARD=1
 
 # Sonsei Neuron version
-SONSEI_NEURON_FW_VERSION = "v1.1.0"
+SONSEI_NEURON_FW_VERSION = "v2.0.0-alpha.3"
 DEFINES += -DSONSEI_NEURON_FW_VERSION=\"${SONSEI_NEURON_FW_VERSION}\"
 
 # Sonsei firmware package version - Neuron + Keyscanner + RFGW
 ifdef SONSEI_FW_VERSION
     DEFINES += -DSONSEI_FW_VERSION=\"${SONSEI_FW_VERSION}\"
 else
-    DEFINES += -DSONSEI_FW_VERSION=\"v1.2.0-alpha\"			# Fixed "alpha" value to recognize local builds
+    DEFINES += -DSONSEI_FW_VERSION=\"v2.0.0-alpha\"			# Fixed "alpha" value to recognize local builds
 endif
 
 DEFINES += -DBOARD_VENDORID=0x35EF
