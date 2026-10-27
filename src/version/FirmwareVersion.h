@@ -54,6 +54,16 @@ class FirmwareVersion
         Sonsei
     };
 
+//    static Device get_layout();
+
+    /*
+     * @brief Get the connection type
+     * @return true if the connection is wireless, false if it is wired
+     */
+    static bool keyboard_is_wireless();
+
+  private:
+
     typedef struct PACK
     {
         uint8_t device_name;
@@ -71,15 +81,6 @@ class FirmwareVersion
 //        keyscanner_spec_t ks_right;
     } device_spec_t;
 
-//    static Device get_layout();
-
-    /*
-     * @brief Get the connection type
-     * @return true if the connection is wireless, false if it is wired
-     */
-    static bool keyboard_is_wireless();
-
-  private:
     static const device_spec_t * p_device_spec;
 
     kbdif_t * p_kbdif = NULL;

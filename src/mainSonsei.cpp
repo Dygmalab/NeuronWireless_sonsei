@@ -88,9 +88,10 @@ extern "C"
 #include "keyboard_api.h"
 #include "Battery.h"
 #include "Ble_manager.h"
-#include "configuration.h"
+#include "Config_manager.h"
 #include "DynamicMacrosDygma.h"
 #include "OverlayProcessing.h"
+#include "Kbd_manager.h"
 #include "LEDDevice-Remote.h"
 #include "LEDManager.h"
 #include "LEDPaletteRGB.h"
@@ -168,7 +169,8 @@ void app_error_fault_handler(uint32_t id, uint32_t pc, uint32_t info)  // On ass
     }
 #endif
 
-    configuration_save();
+#warning "Missing the configuration safe"
+//    configuration_save();
     NRF_LOG_FINAL_FLUSH();
 
     __disable_irq();
@@ -351,15 +353,19 @@ void setup(void)
     NRF_LOG_FLUSH();
 
     // Initialize the System Configuration
-    result = configuration_init();
-    ASSERT_DYGMA( result == RESULT_OK, "configuration_init failed!" );
-
-    // Initialize the communications before Kaleidoscope to make sure the correct order of the incoming message processing
-    Communications.init();
+    result = ConfigManager.init();
+    ASSERT_DYGMA( result == RESULT_OK, "ConfigManager.init failed" );
 
     // Keyboard
     result = _kbdapi_init();
     ASSERT_DYGMA( result == RESULT_OK, "_kbdapi_init failed!" );
+
+    // Communications
+    Communications.init();
+
+    // Keyboard manager
+    result = kbdManager.init();
+    ASSERT_DYGMA( result == RESULT_OK, "Kbd_manager.init failed!" );
 
     // Firmware version
     result = FirmwareVersion.init();
@@ -413,7 +419,7 @@ void loop()
 //    protocolBreathe();    /* (Commented in Nov 2025) See the note above */
 
     LEDManager.run();
-    configuration_run();
+    ConfigManager.run();
 
     NRF_LOG_PROCESS(); // Process deferred logs (send it to the host computer via UART).
 }
@@ -454,7 +460,9 @@ static void init_gpio(void)
 void reset_mcu(void)
 {
     watchdog_timer.reset();
-    configuration_save();
+
+#warning "Missing the configuration safe"
+//    configuration_save();
 
     sd_softdevice_disable();  // Disable SD.
 
@@ -486,7 +494,7 @@ void yield(void)
     TinyUSB_Device_FlushCDC();
 #endif
 
-    if(ble_connected())
+    if(BleManager.is_connected())
     {
         RawHID.flush();
     }
@@ -497,9 +505,13 @@ void yield(void)
     TinyUSB_Device_Task();
 #endif
 
-    if(ble_innited() && FirmwareVersion.keyboard_is_wireless())
+    /*
+     * The BleManager.run() is still needed to be run in the yield function due to the modules like "Macros" still using blocking
+     * delays which internally call the yield for their proper functionality
+     */
+    if( FirmwareVersion.keyboard_is_wireless() == true && BleManager.is_enabled() == true )
     {
-        ble_run();
+        BleManager.run();
     }
 }
 

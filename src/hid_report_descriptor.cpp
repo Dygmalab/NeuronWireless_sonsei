@@ -22,9 +22,6 @@
 #include "hidDefy.h"
 #include <string.h>
 
-#warning "Temporary SONSEI usage definition needs to be added to hidDefy.h when we publicly announce the new Sonsei product."
-#define RAW_USAGE_SONSEI    0x01
-
 // BLE descriptor: full 200-byte Raw HID report (report ID 5)
 const uint8_t hid_report_descriptor_sonsei[] = HID_DEFY_REPORT_DESCRIPTOR( RAW_USAGE_SONSEI );
 
@@ -49,7 +46,7 @@ void hid_report_descriptor_get( const uint8_t ** pp_desc, uint32_t * p_desc_len 
 
 // Probe: measures the exact byte-size of the BLE Raw HID tail in the descriptor.
 static const uint8_t ble_rawhid_tail_probe[] = {
-    TUD_HID_REPORT_DESC_GENERIC_INOUT_DYGMA(OUTPUT_REPORT_LEN_RAW, RAW_USAGE_SONSEI,
+    TUD_HID_REPORT_DESC_GENERIC_INOUT_DYGMA(BLE_OUTPUT_REPORT_LEN_RAW, RAW_USAGE_SONSEI,
                                             HID_REPORT_ID(REPORT_ID_RAW))
 };
 
