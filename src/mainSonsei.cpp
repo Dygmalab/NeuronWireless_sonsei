@@ -86,8 +86,11 @@ extern "C"
 //#include <Adafruit_TinyUSB.h>
 
 #include "keyboard_api.h"
+#include "AutoshiftDygma.h"
 #include "Battery.h"
 #include "Ble_manager.h"
+#include "CapsWordDygma.h"
+#include "CombosDygma.h"
 #include "Config_manager.h"
 #include "DynamicMacrosDygma.h"
 #include "OverlayProcessing.h"
@@ -387,7 +390,10 @@ void setup(void)
     result = Upgrade.init();
     ASSERT_DYGMA( result == RESULT_OK, "Upgrade.init failed!" );
 
-    // Overlay keys
+    // Overlay keys and layer notifications to Dygma-Lens over Raw HID.
+    // Must be registered before the LED Manager: the kbdif manager stops at the
+    // first interface that consumes an event, and the LED Manager consumes the
+    // layer change.
     result = OverlayProcessing.init();
     ASSERT_DYGMA( result == RESULT_OK, "OverlayProcessing.init failed!" );
 
@@ -398,6 +404,12 @@ void setup(void)
     //SuperkeysHandler.setup(); // Initialize the SuperkeysHandler plugin.
     keyRoleManager.setup_superkeys();   // Initialize the keyRoleManager plugin.
     DynamicMacros.reserve_storage();
+
+    // The configuration memory is allocated in request order, so the blocks added after the first
+    // dynamic-allocation release must stay last to keep the layout of the already saved images.
+    Autoshift.reserve_storage();
+    CapsWordTrigger.reserve_storage();
+    Combos.reserve_storage();
 
     // Keep the HID begin after the Kaleidoscope setup.
     HID().begin();
