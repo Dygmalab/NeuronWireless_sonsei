@@ -23,6 +23,7 @@
 #include "CombosDygma.h"
 #include "configuration.h"
 #include "Config_manager.h"
+#include "DefaultLayerDygma.h"
 #include "DynamicMacrosDygma.h"
 #include "EEPROMKeymapDygma.h"
 #include "FirmwareVersion.h"
@@ -56,6 +57,9 @@ typedef struct PACK __attribute__((aligned(4)))
     kaleidoscope::plugin::AutoshiftDygma::autoshift_config_t autoshift;
     kaleidoscope::plugin::CapsWordTriggerDygma::capsword_config_t capsword;
     kaleidoscope::plugin::CombosDygma::combos_config_t combos;
+
+    /* Keep the new blocks last to preserve the layout of the already saved images */
+    kaleidoscope::plugin::DefaultLayerDygma::default_layer_config_t default_layer;
 
 } config_cache_t;
 
@@ -172,6 +176,12 @@ static result_t _cfg_item_request_kbdmem_cb( kbdmem_item_type_t item_type, const
         case KBDMEM_ITEM_TYPE_COMBOS:
 
             *pp_item = &config_cache.combos;
+
+            break;
+
+        case KBDMEM_ITEM_TYPE_DEFAULTLAYER:
+
+            *pp_item = &config_cache.default_layer;
 
             break;
 
