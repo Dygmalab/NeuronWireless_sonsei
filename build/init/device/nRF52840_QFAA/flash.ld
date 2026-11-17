@@ -9,11 +9,11 @@ GROUP(-lgcc -lc -lnosys)
       The softdevice is located between addresses 0 and 0x27000 - 1 so 
       memory app starts at 0x27000.
     
-    LENGTH = 0xC9000
+    LENGTH = 0xC7000
       Total length of the app firmware, excluding the softdevice.
-      Following are the 3 reserved pages for FDS ans 2 pages for the EEPROM class.
-      The last 9 pages of flash are for the bootloader, the MBR and bootloader
-      data storage.
+      Following are 4 pages reserved for the EEPROM configuration class and 
+      3 pages for FDS. The last 11 pages of flash are for the bootloader, 
+      Seal, MBR and bootloader data storage.
 
   RAM:
     ORIGIN = 0x20009400
@@ -25,8 +25,8 @@ GROUP(-lgcc -lc -lnosys)
 */
 MEMORY
 {  
-  FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xC9000
-  /*FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xD4000       /* No bootloader */
+  FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xC7000
+  /*FLASH (rx) : ORIGIN = 0x27000, LENGTH = 0xD2000       /* No bootloader */
   RAM (rwx) :  ORIGIN = 0x20005978, LENGTH = 0x3A688      /* s140 */  
 }
 
